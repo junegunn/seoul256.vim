@@ -8,7 +8,7 @@
 seoul256.vim
 ------------
 
-*seoul256.vim* is a low-contrast dark Vim color scheme based on [Seoul Colors](http://www.seoul.go.kr/v2012/seoul/symbol/color.html").
+*seoul256.vim* is a low-contrast dark Vim color scheme based on [Seoul Colors](http://www.seoul.go.kr/v2012/seoul/symbol/color.html).
 Works on 256-color terminal or on GVim.
 
 Installation (with Vundle)
