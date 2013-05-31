@@ -252,13 +252,14 @@ call s:hi('Question', 218, '')
 " Search hit bottom
 call s:hi('WarningMsg', 187, '')
 
-" indentLine
-call s:hi('Conceal', g:seoul256_background + 1, g:seoul256_background)
-call s:hi('Ignore', g:seoul256_background + 1, g:seoul256_background)
-
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""
+
+" indentLine
+" ----------
+call s:hi('Conceal', g:seoul256_background + 1, g:seoul256_background)
+call s:hi('Ignore', g:seoul256_background + 1, g:seoul256_background)
 
 " vim-scroll-position
 " -------------------
