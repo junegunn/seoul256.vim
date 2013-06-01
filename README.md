@@ -8,7 +8,7 @@
 seoul256.vim
 ------------
 
-*seoul256.vim* is a low-contrast dark Vim color scheme based on [Seoul Colors](http://www.seoul.go.kr/v2012/seoul/symbol/color.html).
+*seoul256.vim* is a low-contrast Vim color scheme based on [Seoul Colors](http://www.seoul.go.kr/v2012/seoul/symbol/color.html).
 Works on 256-color terminal or on GVim.
 
 ![seoul256.vim](https://raw.github.com/junegunn/seoul256.vim/screenshot/seoul256.png)
@@ -24,14 +24,33 @@ Bundle 'junegunn/seoul256.vim'
 
 then, execute `BundleInstall` command.
 
+Color schemes
+-------------
+
+```vim
+" Dark color scheme
+colo seoul256
+
+" Light color scheme
+colo seoul256-light
+```
+
 Change background color
 -----------------------
 
 ```vim
-" Range: 234 (darkest) ~ 238 (lightest)
-" Default: 237 (recommended)
+" seoul256:
+"   Range:   234 (darkest) ~ 238 (lightest)
+"   Default: 237
 let g:seoul256_background = 236
 colo seoul256
+
+" seoul256-light:
+"   Range:   252 (darkest) ~ 255 (lightest)
+"   Default: 253
+let g:seoul256_background = 255
+colo seoul256-light
+
 ```
 
 Author
