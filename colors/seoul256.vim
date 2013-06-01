@@ -114,12 +114,12 @@ call s:hi('VisualNOS', '', 23)
 
 call s:hi('Normal', 252, s:seoul256_background)
 call s:hi('Comment', 65, '')
-call s:hi('Number', 221, '')
-call s:hi('Float', 221, '')
-call s:hi('Boolean', 168, '')
-call s:hi('String', 74, '')
+call s:hi('Number', 222, '')
+call s:hi('Float', 222, '')
+call s:hi('Boolean', 103, '')
+call s:hi('String', 109, '')
 call s:hi('Constant', 73, '')
-call s:hi('Character', 168, '')
+call s:hi('Character', 174, '')
 call s:hi('Delimiter', 137, '')
 call s:hi('StringDelimiter', 137, '')
 call s:hi('Statement', 108, '')
@@ -151,7 +151,7 @@ call s:hi('Identifier', 217, '')
 call s:hi('Type', 179, '')
 
 " + - * / <<
-call s:hi('Operator', 109, '')
+call s:hi('Operator', 186, '')
 
 " super yield
 call s:hi('Keyword', 168, '')
@@ -213,7 +213,7 @@ call s:hi('Search', 252, 24)
 call s:hi('IncSearch', 220, s:seoul256_background + 1)
 
 " String delimiter, interpolation
-call s:hi('Special', 209, '')
+call s:hi('Special', 216, '')
 " hi SpecialChar ctermfg=
 " hi SpecialComment ctermfg=
 " hi Tag ctermfg=
