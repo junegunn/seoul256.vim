@@ -11,13 +11,11 @@ seoul256.vim
 *seoul256.vim* is a low-contrast Vim color scheme based on [Seoul Colors](http://www.seoul.go.kr/v2012/seoul/symbol/color.html).
 Works on 256-color terminal or on GVim.
 
-seoul256
-========
+### seoul256
 
 ![seoul256](https://raw.github.com/junegunn/seoul256.vim/screenshot/seoul256.png)
 
-seoul256-light
-==============
+### seoul256-light
 
 ![seoul256-light](https://raw.github.com/junegunn/seoul256.vim/screenshot/seoul256-light.png)
 
