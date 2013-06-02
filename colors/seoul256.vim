@@ -178,7 +178,7 @@ call s:hi('ColorColumn', '', s:seoul256_background - 1)
 " set cursorline cursorcolumn
 call s:hi('CursorLine', '', s:seoul256_background - 1)
 call s:hi('CursorLineNr', 131, s:seoul256_background - 1)
-call s:hi('CursorColumn', '', s:seoul256_background)
+call s:hi('CursorColumn', '', s:seoul256_background - 1)
 
 call s:hi('Directory', 187, '')
 
