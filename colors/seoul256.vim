@@ -8,7 +8,7 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.4
+" Version:      1.2.5
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -96,11 +96,7 @@ function! s:hi(item, fg, bg)
   endif
 endfunction
 
-if !exists('g:seoul256_background') || g:seoul256_background < 234 || g:seoul256_background > 238
-  let s:seoul256_background = 237
-else
-  let s:seoul256_background = g:seoul256_background
-end
+let s:seoul256_background = min([max([get(g:, 'seoul256_background', 237), 234]), 238])
 
 if !has('gui_running')
   set t_Co=256
@@ -167,8 +163,8 @@ call s:hi('Exception', 161, '')
 call s:hi('Structure', 116, '')
 " hi Typedef ctermfg=
 
-call s:hi('Error', '', 168)
-call s:hi('ErrorMsg', '', 168)
+call s:hi('Error', 252, 52)
+call s:hi('ErrorMsg', 252, 52)
 call s:hi('Underlined', 181, '')
 
 " set textwidth=80
@@ -235,19 +231,19 @@ call s:hi('SpellRare', 252, 95)
 "
 call s:hi('StatusLine', 95, 187)
 call s:hi('StatusLineNC', s:seoul256_background + 2, 187)
-call s:hi('TabLineFill', s:seoul256_background - 1, '')
-call s:hi('TabLineSel', 179, 23)
-call s:hi('TabLine', s:seoul256_background - 1, s:seoul256_background + 1)
+call s:hi('TabLineFill', s:seoul256_background + 2, '')
+call s:hi('TabLineSel', 187, 23)
+call s:hi('TabLine', s:seoul256_background + 12, s:seoul256_background + 4)
 call s:hi('WildMenu', 95, 184)
 
 " :set all
-call s:hi('Title', 218, '')
+call s:hi('Title', 181, '')
 
 " TODO
-call s:hi('Question', 218, '')
+call s:hi('Question', 179, '')
 
 " Search hit bottom
-call s:hi('WarningMsg', 187, '')
+call s:hi('WarningMsg', 179, '')
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins

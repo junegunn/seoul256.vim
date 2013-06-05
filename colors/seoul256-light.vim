@@ -8,7 +8,7 @@
 " File:         seoul256-light.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.1
+" Version:      1.2.5
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -96,11 +96,9 @@ function! s:hi(item, fg, bg)
   endif
 endfunction
 
-if !exists('g:seoul256_background') || g:seoul256_background < 252 || g:seoul256_background > 255
-  let s:seoul256_background = 253
-else
-  let s:seoul256_background = g:seoul256_background
-end
+let s:seoul256_background = min([max([get(g:, 'seoul256_background', 253), 252]), 255])
+let s:seoul256_background1 = min([s:seoul256_background + 1, 255])
+let s:seoul256_background2 = min([s:seoul256_background + 2, 255])
 
 if !has('gui_running')
   set t_Co=256
@@ -135,7 +133,7 @@ call s:hi('Conditional', 31, '')
 
 " while end
 call s:hi('Repeat', 67, '')
-call s:hi('Todo', 161, min([255, s:seoul256_background + 2]))
+call s:hi('Todo', 125, s:seoul256_background2)
 call s:hi('Function', 101, '')
 
 " Macros
@@ -167,8 +165,8 @@ call s:hi('Exception', 161, '')
 call s:hi('Structure', 116, '')
 " hi Typedef ctermfg=
 
-call s:hi('Error', '', 168)
-call s:hi('ErrorMsg', '', 168)
+call s:hi('Error', s:seoul256_background1, 174)
+call s:hi('ErrorMsg', s:seoul256_background1, 168)
 call s:hi('Underlined', 168, '')
 
 " set textwidth=80
@@ -192,10 +190,10 @@ call s:hi('DiffChange', 'NONE', 152)
 call s:hi('DiffText', 'NONE', 224)
 
 call s:hi('VertSplit', s:seoul256_background - 3, s:seoul256_background - 3)
-call s:hi('Folded', 101, s:seoul256_background - 1)
+call s:hi('Folded', 101, s:seoul256_background - 2)
 
 " set foldcolumn=1
-call s:hi('FoldColumn', 31, s:seoul256_background - 1)
+call s:hi('FoldColumn', 31, s:seoul256_background - 2)
 
 call s:hi('MatchParen', 232, '')
 
@@ -235,19 +233,19 @@ call s:hi('SpellRare', 252, 95)
 "
 call s:hi('StatusLine', 95, 187)
 call s:hi('StatusLineNC', s:seoul256_background - 2, 238)
-call s:hi('TabLineFill', s:seoul256_background - 1, '')
-call s:hi('TabLineSel', 179, 23)
-call s:hi('TabLine', s:seoul256_background - 1, s:seoul256_background + 0)
+call s:hi('TabLineFill', s:seoul256_background - 2, '')
+call s:hi('TabLineSel', 187, 66)
+call s:hi('TabLine', s:seoul256_background - 12, s:seoul256_background - 4)
 call s:hi('WildMenu', 95, 184)
 
 " :set all
-call s:hi('Title', 161, '')
+call s:hi('Title', 88, '')
 
 " TODO
-call s:hi('Question', 168, '')
+call s:hi('Question', 88, '')
 
 " Search hit bottom
-call s:hi('WarningMsg', 136, '')
+call s:hi('WarningMsg', 88, '')
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -262,7 +260,7 @@ let g:indentLine_color_gui  = s:rgb_map[s:seoul256_background - 2]
 
 " vim-scroll-position
 " -------------------
-call s:hi('SignColumn', 173, s:seoul256_background - 1)
+call s:hi('SignColumn', 173, s:seoul256_background)
 call s:hi('ScrollPositionMarker', 173, s:seoul256_background - 2)
 call s:hi('ScrollPositionVisualBegin', 88, s:seoul256_background - 2)
 call s:hi('ScrollPositionVisualMiddle', 88, s:seoul256_background - 2)
