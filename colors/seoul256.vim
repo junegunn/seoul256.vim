@@ -8,7 +8,7 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.3
+" Version:      1.2.4
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -135,7 +135,7 @@ call s:hi('Conditional', 110, '')
 
 " while end
 call s:hi('Repeat', 68, '')
-call s:hi('Todo', 161, 234)
+call s:hi('Todo', 161, s:seoul256_background - 2)
 call s:hi('Function', 187, '')
 
 " Macros
