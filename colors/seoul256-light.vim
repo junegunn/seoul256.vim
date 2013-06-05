@@ -135,7 +135,7 @@ call s:hi('Conditional', 31, '')
 
 " while end
 call s:hi('Repeat', 67, '')
-call s:hi('Todo', 161, '')
+call s:hi('Todo', 161, min([255, s:seoul256_background + 2]))
 call s:hi('Function', 101, '')
 
 " Macros
