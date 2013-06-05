@@ -8,7 +8,7 @@
 " File:         seoul256-light.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2
+" Version:      1.2.1
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -106,8 +106,11 @@ if !has('gui_running')
   set t_Co=256
 end
 
-set background=dark
+set background=light
 hi clear
+if exists("syntax_on")
+  syntax reset
+endif
 
 call s:hi('LineNr', 101, s:seoul256_background - 2)
 call s:hi('Visual', '', 189)
@@ -293,3 +296,5 @@ call s:hi('rubyPredefinedIdentifier', 52, '')
 
 hi CursorLine cterm=NONE
 hi CursorLineNr cterm=NONE
+
+let g:colors_name = 'seoul256-light'
