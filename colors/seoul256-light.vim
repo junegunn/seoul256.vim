@@ -8,7 +8,8 @@
 " File:         seoul256-light.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.5
+" Version:      1.2.6
+" Last Updated: June 11, 2013
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -162,7 +163,7 @@ call s:hi('Keyword', 168, '')
 call s:hi('Exception', 161, '')
 "
 " hi StorageClass ctermfg=
-call s:hi('Structure', 116, '')
+call s:hi('Structure', 23, '')
 " hi Typedef ctermfg=
 
 call s:hi('Error', s:seoul256_background1, 174)
@@ -195,10 +196,10 @@ call s:hi('Folded', 101, s:seoul256_background - 2)
 " set foldcolumn=1
 call s:hi('FoldColumn', 31, s:seoul256_background - 2)
 
-call s:hi('MatchParen', 232, '')
+call s:hi('MatchParen', s:seoul256_background2, '')
 
 " -- INSERT --
-call s:hi('ModeMsg', 209, '')
+call s:hi('ModeMsg', 173, '')
 
 " let &showbreak = '> '
 call s:hi('NonText', 101, '')
@@ -215,7 +216,7 @@ call s:hi('Search', 255, 74)
 call s:hi('IncSearch', 220, 238)
 
 " String delimiter, interpolation
-call s:hi('Special', 209, '')
+call s:hi('Special', 173, '')
 " hi SpecialChar ctermfg=
 " hi SpecialComment ctermfg=
 " hi Tag ctermfg=
