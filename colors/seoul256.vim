@@ -8,8 +8,8 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.7
-" Last Updated: June 13, 2013
+" Version:      1.2.8
+" Last Updated: June 28, 2013
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -97,7 +97,7 @@ function! s:hi(item, fg, bg)
   endif
 endfunction
 
-let s:seoul256_background = min([max([get(g:, 'seoul256_background', 237), 234]), 238])
+let s:seoul256_background = min([max([get(g:, 'seoul256_background', 237), 234]), 239])
 
 if !has('gui_running')
   set t_Co=256
@@ -185,14 +185,15 @@ call s:hi('Directory', 187, '')
 
 call s:hi('DiffAdd', 'NONE', 24)
 call s:hi('DiffDelete', 'NONE', 95)
-call s:hi('DiffChange', 'NONE', 23)
+call s:hi('DiffChange', 'NONE', 240)
 call s:hi('DiffText', 'NONE', 52)
 
+call s:hi('DiffText', 'NONE', 52)
 call s:hi('VertSplit', s:seoul256_background - 2, s:seoul256_background - 2)
 call s:hi('Folded', 101, s:seoul256_background + 1)
 
 " set foldcolumn=1
-call s:hi('FoldColumn', 31, s:seoul256_background + 1)
+call s:hi('FoldColumn', 144, s:seoul256_background + 1)
 
 call s:hi('MatchParen', 232, '')
 

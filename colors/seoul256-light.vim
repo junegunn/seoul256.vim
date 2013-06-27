@@ -8,8 +8,8 @@
 " File:         seoul256-light.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.7
-" Last Updated: June 13, 2013
+" Version:      1.2.8
+" Last Updated: June 28, 2013
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -88,16 +88,18 @@ let s:rgb_map = {
 \ }
 
 function! s:hi(item, fg, bg)
+  let fg = a:fg > 255 ? 231 : a:fg
+  let bg = a:bg > 255 ? 231 : a:bg
   if empty(a:bg)
-    execute printf("highlight %s ctermfg=%s guifg=%s", a:item, a:fg, s:rgb_map[a:fg])
+    execute printf("highlight %s ctermfg=%s guifg=%s", a:item, fg, s:rgb_map[fg])
   elseif empty(a:fg)
-    execute printf("highlight %s ctermbg=%s guibg=%s", a:item, a:bg, s:rgb_map[a:bg])
+    execute printf("highlight %s ctermbg=%s guibg=%s", a:item, bg, s:rgb_map[bg])
   else
-    execute printf("highlight %s ctermfg=%s guifg=%s ctermbg=%s guibg=%s", a:item, a:fg, s:rgb_map[a:fg], a:bg, s:rgb_map[a:bg])
+    execute printf("highlight %s ctermfg=%s guifg=%s ctermbg=%s guibg=%s", a:item, fg, s:rgb_map[fg], bg, s:rgb_map[bg])
   endif
 endfunction
 
-let s:seoul256_background = min([max([get(g:, 'seoul256_background', 253), 252]), 255])
+let s:seoul256_background = min([max([get(g:, 'seoul256_background', 253), 252]), 256])
 let s:seoul256_background1 = min([s:seoul256_background + 1, 255])
 let s:seoul256_background2 = min([s:seoul256_background + 2, 255])
 
@@ -112,8 +114,9 @@ if exists("syntax_on")
 endif
 
 call s:hi('LineNr', 101, s:seoul256_background - 2)
-call s:hi('Visual', '', 189)
-call s:hi('VisualNOS', '', 189)
+call s:hi('Visual', '', 152)
+call s:hi('VisualNOS', '', 152)
+
 
 call s:hi('Normal', 238, s:seoul256_background)
 call s:hi('Comment', 65, '')
@@ -123,8 +126,8 @@ call s:hi('Boolean', 168, '')
 call s:hi('String', 24, '')
 call s:hi('Constant', 23, '')
 call s:hi('Character', 168, '')
-call s:hi('Delimiter', 136, '')
-call s:hi('StringDelimiter', 136, '')
+call s:hi('Delimiter', 94, '')
+call s:hi('StringDelimiter', 94, '')
 call s:hi('Statement', 66, '')
 " case, default, etc.
 " hi Label ctermfg=
@@ -135,7 +138,7 @@ call s:hi('Conditional', 31, '')
 " while end
 call s:hi('Repeat', 67, '')
 call s:hi('Todo', 125, s:seoul256_background2)
-call s:hi('Function', 101, '')
+call s:hi('Function', 58, '')
 
 " Macros
 call s:hi('Define', 131, '')
@@ -145,13 +148,13 @@ call s:hi('PreCondit', 131, '')
 
 
 " #!
-call s:hi('PreProc', 101, '')
+call s:hi('PreProc', 58, '')
 
 " @abc
 call s:hi('Identifier', 89, '')
 
 " AAA Abc
-call s:hi('Type', 136, '')
+call s:hi('Type', 94, '')
 
 " + - * / <<
 call s:hi('Operator', 131, '')
@@ -187,14 +190,14 @@ call s:hi('Directory', 88, '')
 
 call s:hi('DiffAdd', 'NONE', 189)
 call s:hi('DiffDelete', 'NONE', 181)
-call s:hi('DiffChange', 'NONE', 152)
+call s:hi('DiffChange', 'NONE', 151)
 call s:hi('DiffText', 'NONE', 224)
 
 call s:hi('VertSplit', s:seoul256_background - 3, s:seoul256_background - 3)
 call s:hi('Folded', 101, s:seoul256_background - 2)
 
 " set foldcolumn=1
-call s:hi('FoldColumn', 31, s:seoul256_background - 2)
+call s:hi('FoldColumn', 94, s:seoul256_background - 2)
 
 call s:hi('MatchParen', s:seoul256_background2, '')
 

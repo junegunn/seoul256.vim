@@ -46,15 +46,15 @@ Change background color
 
 ```vim
 " seoul256:
-"   Range:   234 (darkest) ~ 238 (lightest)
+"   Range:   234 (darkest) ~ 239 (lightest)
 "   Default: 237
 let g:seoul256_background = 236
 colo seoul256
 
 " seoul256-light:
-"   Range:   252 (darkest) ~ 255 (lightest)
+"   Range:   252 (darkest) ~ 256 (lightest)
 "   Default: 253
-let g:seoul256_background = 255
+let g:seoul256_background = 256
 colo seoul256-light
 
 ```
