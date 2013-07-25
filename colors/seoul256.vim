@@ -8,8 +8,8 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.8
-" Last Updated: June 28, 2013
+" Version:      1.2.9
+" Last Updated: July 25, 2013
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -103,17 +103,18 @@ if !has('gui_running')
   set t_Co=256
 end
 
-set background=dark
+silent! unlet g:colors_name
 hi clear
 if exists("syntax_on")
   syntax reset
 endif
+call s:hi('Normal', 252, s:seoul256_background)
+set background=dark
 
 call s:hi('LineNr', 101, s:seoul256_background + 1)
 call s:hi('Visual', '', 23)
 call s:hi('VisualNOS', '', 23)
 
-call s:hi('Normal', 252, s:seoul256_background)
 call s:hi('Comment', 65, '')
 call s:hi('Number', 222, '')
 call s:hi('Float', 222, '')
