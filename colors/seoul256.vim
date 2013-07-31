@@ -8,8 +8,8 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.9
-" Last Updated: July 25, 2013
+" Version:      1.2.10
+" Last Updated: August 1, 2013
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -222,8 +222,8 @@ call s:hi('Special', 216, '')
 " hi Tag ctermfg=
 " hi Debug ctermfg=
 
-" :map
-call s:hi('SpecialKey', 73, '')
+" :map, listchars
+call s:hi('SpecialKey', 59, '')
 
 " TODO: spell check
 call s:hi('SpellBad', 252, 95)
