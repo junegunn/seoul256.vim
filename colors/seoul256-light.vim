@@ -8,8 +8,8 @@
 " File:         seoul256-light.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.10
-" Last Updated: August 1, 2013
+" Version:      1.2.11-dev
+" Last Updated: August 9, 2013
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -112,7 +112,7 @@ hi clear
 if exists("syntax_on")
   syntax reset
 endif
-call s:hi('Normal', 238, s:seoul256_background)
+call s:hi('Normal', 239, s:seoul256_background)
 set background=light
 
 call s:hi('LineNr', 101, s:seoul256_background - 2)
@@ -151,7 +151,7 @@ call s:hi('PreCondit', 131, '')
 call s:hi('PreProc', 58, '')
 
 " @abc
-call s:hi('Identifier', 89, '')
+call s:hi('Identifier', 96, '')
 
 " AAA Abc
 call s:hi('Type', 94, '')
