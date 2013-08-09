@@ -8,8 +8,8 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.10
-" Last Updated: August 1, 2013
+" Version:      1.2.11
+" Last Updated: August 9, 2013
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -259,6 +259,12 @@ call s:hi('Ignore', s:seoul256_background + 1, s:seoul256_background)
 let g:indentLine_color_term = s:seoul256_background + 1
 let g:indentLine_color_gui  = s:rgb_map[s:seoul256_background + 1]
 
+" vim-indent-guides
+" -----------------
+let g:indent_guides_auto_colors = 0
+call s:hi('IndentGuidesOdd', '', s:seoul256_background - 1)
+call s:hi('IndentGuidesEven', '', s:seoul256_background + 1)
+
 " vim-scroll-position
 " -------------------
 call s:hi('SignColumn', 173, s:seoul256_background)
@@ -279,7 +285,7 @@ call s:hi('GitGutterChangeDelete', 168, '')
 
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces     
 " ---------------------------------------------------^^^^^
-call s:hi('ExtraWhitespace', '', s:seoul256_background - 2)
+call s:hi('ExtraWhitespace', '', s:seoul256_background - 1)
 
 " vim-ruby
 " --------

@@ -8,7 +8,7 @@
 " File:         seoul256-light.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.11-dev
+" Version:      1.2.11
 " Last Updated: August 9, 2013
 " License:      MIT
 "
@@ -123,7 +123,7 @@ call s:hi('Comment', 65, '')
 call s:hi('Number', 95, '')
 call s:hi('Float', 95, '')
 call s:hi('Boolean', 168, '')
-call s:hi('String', 24, '')
+call s:hi('String', 30, '')
 call s:hi('Constant', 23, '')
 call s:hi('Character', 168, '')
 call s:hi('Delimiter', 94, '')
@@ -186,7 +186,7 @@ call s:hi('CursorLine', '', s:seoul256_background - 1)
 call s:hi('CursorLineNr', 131, s:seoul256_background - 1)
 call s:hi('CursorColumn', '', s:seoul256_background - 1)
 
-call s:hi('Directory', 88, '')
+call s:hi('Directory', 95, '')
 
 call s:hi('DiffAdd', 'NONE', 189)
 call s:hi('DiffDelete', 'NONE', 181)
@@ -261,6 +261,12 @@ call s:hi('Conceal', s:seoul256_background - 2, s:seoul256_background)
 call s:hi('Ignore', s:seoul256_background - 2, s:seoul256_background)
 let g:indentLine_color_term = s:seoul256_background - 2
 let g:indentLine_color_gui  = s:rgb_map[s:seoul256_background - 2]
+
+" vim-indent-guides
+" -----------------
+let g:indent_guides_auto_colors = 0
+call s:hi('IndentGuidesOdd', '', s:seoul256_background + 1)
+call s:hi('IndentGuidesEven', '', s:seoul256_background - 1)
 
 " vim-scroll-position
 " -------------------
