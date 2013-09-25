@@ -19,16 +19,26 @@ Works on 256-color terminal or on GVim.
 
 ![seoul256-light](https://raw.github.com/junegunn/seoul256.vim/screenshot/seoul256-light.png)
 
-Installation (with Vundle)
---------------------------
+Installation
+------------
 
-Add the following line to your .vimrc,
+[Use](https://github.com/tpope/vim-pathogen)
+[your](https://github.com/gmarik/vundle)
+[favorite](https://github.com/junegunn/vim-plug)
+[plugin](https://github.com/Shougo/neobundle.vim)
+[manager](https://github.com/MarcWeber/vim-addon-manager).
 
-```vim
-Bundle 'junegunn/seoul256.vim'
-```
-
-then, execute `BundleInstall` command.
+- [Pathogen](https://github.com/tpope/vim-pathogen)
+  - `git clone https://github.com/junegunn/seoul256.vim.git ~/.vim/bundle/seoul256.vim`
+- [Vundle](https://github.com/gmarik/vundle)
+  1. Add `Bundle 'junegunn/seoul256.vim'` to .vimrc
+  2. Run `:BundleInstall`
+- [NeoBundle](https://github.com/Shougo/neobundle.vim)
+  1. Add `NeoBundle 'junegunn/seoul256.vim'` to .vimrc
+  2. Run `:NeoBundleInstall`
+- [vim-plug](https://github.com/junegunn/vim-plug)
+  1. Add `Plug 'junegunn/seoul256.vim'` to .vimrc
+  2. Run `:PlugInstall`
 
 Color schemes
 -------------
