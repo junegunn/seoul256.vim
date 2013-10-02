@@ -99,10 +99,6 @@ endfunction
 
 let s:seoul256_background = min([max([get(g:, 'seoul256_background', 237), 234]), 239])
 
-if !has('gui_running')
-  set t_Co=256
-end
-
 silent! unlet g:colors_name
 hi clear
 if exists("syntax_on")

@@ -103,10 +103,6 @@ let s:seoul256_background = min([max([get(g:, 'seoul256_background', 253), 252])
 let s:seoul256_background1 = min([s:seoul256_background + 1, 255])
 let s:seoul256_background2 = min([s:seoul256_background + 2, 255])
 
-if !has('gui_running')
-  set t_Co=256
-end
-
 silent! unlet g:colors_name
 hi clear
 if exists("syntax_on")
