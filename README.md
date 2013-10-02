@@ -38,9 +38,9 @@ Installation
   2. Run `:NeoBundleInstall`
 - [vim-plug](https://github.com/junegunn/vim-plug)
   1. Add `Plug 'junegunn/seoul256.vim'` to .vimrc
+      - If you do not wish to have `t_Co` set to 256, use `no-t_co` branch
+      - `Plug 'junegunn/seoul256.vim', 'no-t_co'`
   2. Run `:PlugInstall`
-  - If you do not wish to have `t_Co` set to 256, use `no-t_co` branch
-    - `Plug 'junegunn/seoul256.vim', 'no-t_co'`
 
 Color schemes
 -------------
