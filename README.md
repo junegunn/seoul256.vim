@@ -58,7 +58,7 @@ Change background color
 
 ```vim
 " seoul256:
-"   Range:   234 (darkest) ~ 239 (lightest)
+"   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 237
 let g:seoul256_background = 236
 colo seoul256
