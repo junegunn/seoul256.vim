@@ -97,7 +97,11 @@ function! s:hi(item, fg, bg)
   endif
 endfunction
 
-let s:seoul256_background = min([max([get(g:, 'seoul256_background', 237), 234]), 239])
+if get(g:, "seoul256_forced_background", 0)
+  let s:seoul256_background = g:seoul256_forced_background
+else
+  let s:seoul256_background = min([max([get(g:, 'seoul256_background', 237), 234]), 239])
+endif
 
 if !has('gui_running')
   set t_Co=256
@@ -283,7 +287,7 @@ call s:hi('GitGutterChange', 65, '')
 call s:hi('GitGutterDelete', 161, '')
 call s:hi('GitGutterChangeDelete', 168, '')
 
-" http://vim.wikia.com/wiki/Highlight_unwanted_spaces     
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 " ---------------------------------------------------^^^^^
 call s:hi('ExtraWhitespace', '', s:seoul256_background - 1)
 

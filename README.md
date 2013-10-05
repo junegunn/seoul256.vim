@@ -71,6 +71,13 @@ colo seoul256-light
 
 ```
 
+You can also force the extact background you like:
+
+```vim
+let g:seoul256_forced_background = 233
+colo seoul256
+```
+
 Author
 ------
 
