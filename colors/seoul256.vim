@@ -126,7 +126,6 @@ if exists("syntax_on")
   syntax reset
 endif
 call s:hi('Normal', [252, 239], [s:dark_bg, s:light_bg])
-" set background=dark
 
 call s:hi('LineNr', [101, 101], [s:dark_bg + 1, s:light_bg - 2])
 call s:hi('Visual', ['',''], [23, 152])
