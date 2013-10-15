@@ -1,0 +1,149 @@
+Execute (Initialize):
+  Save g:seoul256_background
+
+  function! HI(group)
+    redir => out
+    execute "silent hi ".a:group
+    redir END
+    return out
+  endfunction
+
+  function! AssertDark(...)
+    let bg = a:0 > 0 ? a:1 : 237
+    Assert HI('Normal')     =~ 'ctermfg=252 ctermbg='.bg, 'Normal'
+    Assert HI('CursorLine') =~ 'ctermbg='.(bg - 1),       'CursorLine'
+    Assert HI('TabLine')    =~ 'ctermfg='.(bg + 12),      'TabLine'
+
+    Assert HI('DiffAdd')    !~ 'fg', 'DiffAdd fg=NONE'
+    Assert HI('DiffText')   !~ 'fg', 'DiffText fg=NONE'
+
+    AssertEqual 'seoul256', g:colors_name
+    AssertEqual 'dark', &background
+  endfunction
+
+  function! AssertLight(...)
+    let bg = a:0 > 0 ? a:1 : 253
+    let b  = bg == 256 ? 231 : bg
+    Assert HI('Normal')     =~ 'ctermfg=239 ctermbg='.b,  'Normal'
+    Assert HI('CursorLine') =~ 'ctermbg='.(bg - 1),       'CursorLine'
+    Assert HI('TabLine')    =~ 'ctermfg='.(bg - 12),      'TabLine'
+
+    Assert HI('DiffAdd')    !~ 'fg', 'DiffAdd fg=NONE'
+    Assert HI('DiffText')   !~ 'fg', 'DiffText fg=NONE'
+
+    Assert g:colors_name =~ '^seoul256\(-light\)\?$', g:colors_name
+    AssertEqual 'light', &background
+  endfunction
+
+Execute (default -> seoul256 = dark):
+  colo default
+  colo seoul256
+  call AssertDark()
+
+Execute (seoul256 -> set background=dark = dark):
+  set background=dark
+  call AssertDark()
+
+Execute (seoul256 -> set background=light = light):
+  set background=light
+  call AssertLight()
+  AssertEqual 'seoul256', g:colors_name
+
+Execute (seoul256 (light) -> set background=dark = dark):
+  set background=dark
+  call AssertDark()
+
+Execute (default -> seoul256-light = light):
+  colo default
+  colo seoul256-light
+  call AssertLight()
+  AssertEqual 'seoul256-light', g:colors_name
+
+Execute (seoul256-light -> seoul256 = dark):
+  colo seoul256
+  call AssertDark()
+
+Execute (seoul256-light -> set background=dark = seoul256):
+  colo seoul256-light
+  set background=dark
+  call AssertDark()
+
+Execute (seoul256-light -> set background=light = seoul256-light):
+  colo seoul256-light
+  set background=light
+  call AssertLight()
+  AssertEqual 'seoul256-light', g:colors_name
+
+Execute (Dark g:seoul256_background):
+  for bg in range(233, 239)
+    let g:seoul256_background = bg
+    colo seoul256
+    call AssertDark(bg)
+  endfor
+  for bg in range(233, 239)
+    let g:seoul256_background = bg
+    set background=dark
+    call AssertDark(bg)
+  endfor
+
+Execute (Light g:seoul256_background):
+  for bg in range(252, 256)
+    let g:seoul256_background = bg
+    colo seoul256
+    call AssertLight(bg)
+  endfor
+  for bg in range(252, 256)
+    let g:seoul256_background = bg
+    set background=light
+    call AssertLight(bg)
+  endfor
+
+Execute (default -> g:seoul256_background (dark) -> seoul256 = seoul256):
+  colo default
+  let g:seoul256_background = 233
+  colo seoul256
+  call AssertDark(233)
+
+Execute (default -> g:seoul256_background (light) -> seoul256 = seoul256 (light)):
+  colo default
+  let g:seoul256_background = 255
+  colo seoul256
+  call AssertLight(255)
+  AssertEqual 'seoul256', g:colors_name
+
+Execute (default -> g:seoul256_background (invalid) -> seoul256 = seoul256):
+  colo default
+  let g:seoul256_background = 100
+  colo seoul256
+  call AssertDark()
+  AssertEqual 'seoul256', g:colors_name
+
+Execute (default -> g:seoul256_background (dark) -> seoul256-light = seoul256):
+  colo default
+  let g:seoul256_background = 233
+  colo seoul256-light
+  call AssertDark(233)
+
+Execute (default -> g:seoul256_background (light) -> seoul256-light = seoul256-light):
+  colo default
+  let g:seoul256_background = 256
+  colo seoul256-light
+  call AssertLight(256)
+  AssertEqual 'seoul256-light', g:colors_name
+
+Execute (default -> g:seoul256_background (invalid) -> seoul256-light = seoul256-light):
+  colo default
+  let g:seoul256_background = 100
+  colo seoul256-light
+  call AssertLight()
+  AssertEqual 'seoul256-light', g:colors_name
+
+Execute (Cleanup):
+  delf HI
+  delf AssertDark
+  delf AssertLight
+  unlet g:seoul256_background
+
+  Restore
+  colo default
+  source $MYVIMRC

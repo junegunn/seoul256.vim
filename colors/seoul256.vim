@@ -8,8 +8,8 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.12
-" Last Updated: October 5, 2013
+" Version:      1.3.0
+" Last Updated: October 16, 2013
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -35,7 +35,8 @@
 " OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 " WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-let s:rgb_map = {
+if !exists('s:rgb_map')
+  let s:rgb_map = {
   \ 'NONE': 'NONE',
   \ 16: "#000000", 17: "#0C0077", 18: "#14009F", 19: "#1B00C5", 20: "#2200E8",
   \ 21: "#2900FF", 22: "#007600", 23: "#007475", 24: "#00739E", 25: "#0071C3",
@@ -85,36 +86,58 @@ let s:rgb_map = {
   \ 241: "#757575", 242: "#7F7F7F", 243: "#888888", 244: "#929292", 245: "#9B9B9B",
   \ 246: "#A4A4A4", 247: "#ADADAD", 248: "#B6B6B6", 249: "#BFBFBF", 250: "#C7C7C7",
   \ 251: "#D0D0D0", 252: "#D8D8D8", 253: "#E0E0E0", 254: "#E9E9E9", 255: "#F1F1F1"
-\ }
-
-let s:style = &background
-if s:style == 'dark'
-  let s:sty_ix = 0
-else
-  let s:sty_ix = 1
+  \ }
 endif
 
-function! s:truncate(color)
-  return a:color == 'NONE' || a:color > 255 ? 231 : a:color
-endfunction
+silent! unlet s:style
+
+" 1. If g:seoul256_background is found
+if exists('g:seoul256_background')
+  let s:seoul256_background = g:seoul256_background
+  if s:seoul256_background >= 233 && s:seoul256_background <= 239
+    let s:style = 'dark'
+  elseif s:seoul256_background >= 252 && s:seoul256_background <= 256
+    let s:style = 'light'
+  else
+    unlet s:seoul256_background
+  endif
+endif
+
+if !exists('s:style')
+  " 2. If g:colors_name is NOT 'seoul256' -> dark version
+  if get(g:, 'colors_name', '') != 'seoul256'
+    let s:style = 'dark'
+  " 3. Follow &background setting
+  else
+    let s:style = &background
+  endif
+endif
+
+" Background colors
+if s:style == 'dark'
+  let s:dark_bg  = get(s:, 'seoul256_background', 237)
+  let s:light_bg = 252
+else
+  let s:dark_bg  = 237
+  let s:light_bg = get(s:, 'seoul256_background', 253)
+endif
+let s:dark_bg_2 = s:dark_bg > 233 ? s:dark_bg - 2 : 16
+let s:light_bg_1 = min([s:light_bg + 1, 256])
+let s:light_bg_2 = min([s:light_bg + 2, 256])
+
+let s:style_idx = s:style == 'light'
 
 function! s:hi(item, fg, bg)
-  let l:fg = s:truncate(a:fg[s:sty_ix])
-  let l:bg = s:truncate(a:bg[s:sty_ix])
+  let fg = a:fg[s:style_idx] > 255 ? 231 : a:fg[s:style_idx]
+  let bg = a:bg[s:style_idx] > 255 ? 231 : a:bg[s:style_idx]
 
-  if !empty(l:fg)
-    execute printf("highlight %s ctermfg=%s guifg=%s", a:item, l:fg, s:rgb_map[l:fg])
+  if !empty(fg)
+    execute printf("highlight %s ctermfg=%s guifg=%s", a:item, fg, s:rgb_map[fg])
   endif
-  if !empty(l:bg)
-    execute printf("highlight %s ctermbg=%s guibg=%s", a:item, l:bg, s:rgb_map[l:bg])
+  if !empty(bg)
+    execute printf("highlight %s ctermbg=%s guibg=%s", a:item, bg, s:rgb_map[bg])
   endif
 endfunction
-
-let s:dark_bg = min([max([get(g:, 'seoul256_background', 237), 233]), 239])
-let s:dark_bg_2 = s:dark_bg > 233 ? s:dark_bg - 2 : 16
-let s:light_bg = min([max([get(g:, 'seoul256_background', 253), 252]), 256])
-let s:light_bg_1 = min([s:light_bg + 1, 255])
-let s:light_bg_2 = min([s:light_bg + 2, 255])
 
 if !has('gui_running')
   set t_Co=256
@@ -131,7 +154,7 @@ call s:hi('LineNr', [101, 101], [s:dark_bg + 1, s:light_bg - 2])
 call s:hi('Visual', ['',''], [23, 152])
 call s:hi('VisualNOS', ['',''], [23, 152])
 
-call s:hi('Comment', [65,65], ['',''])
+call s:hi('Comment', [65, 65], ['',''])
 call s:hi('Number', [222, 95], ['',''])
 call s:hi('Float', [222, 95], ['',''])
 call s:hi('Boolean', [103, 168], ['',''])
@@ -271,8 +294,8 @@ call s:hi('WarningMsg', [179, 88], ['',''])
 " ----------
 call s:hi('Conceal', [s:dark_bg + 1, s:light_bg - 2], [s:dark_bg, s:light_bg])
 call s:hi('Ignore', [s:dark_bg + 1, s:light_bg - 2], [s:dark_bg, s:light_bg])
-let g:indentLine_color_term = [s:dark_bg + 1, s:light_bg - 2][s:sty_ix]
-let g:indentLine_color_gui  = s:rgb_map[[s:dark_bg + 1, s:light_bg - 2][s:sty_ix]]
+let g:indentLine_color_term = [s:dark_bg + 1, s:light_bg - 2][s:style_idx]
+let g:indentLine_color_gui  = s:rgb_map[[s:dark_bg + 1, s:light_bg - 2][s:style_idx]]
 
 " vim-indent-guides
 " -----------------
