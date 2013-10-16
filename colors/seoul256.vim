@@ -151,77 +151,77 @@ endif
 call s:hi('Normal', [252, 239], [s:dark_bg, s:light_bg])
 
 call s:hi('LineNr', [101, 101], [s:dark_bg + 1, s:light_bg - 2])
-call s:hi('Visual', ['',''], [23, 152])
-call s:hi('VisualNOS', ['',''], [23, 152])
+call s:hi('Visual', ['', ''], [23, 152])
+call s:hi('VisualNOS', ['', ''], [23, 152])
 
-call s:hi('Comment', [65, 65], ['',''])
-call s:hi('Number', [222, 95], ['',''])
-call s:hi('Float', [222, 95], ['',''])
-call s:hi('Boolean', [103, 168], ['',''])
-call s:hi('String', [109, 30], ['',''])
-call s:hi('Constant', [73, 23], ['',''])
-call s:hi('Character', [174, 168], ['',''])
-call s:hi('Delimiter', [137, 94], ['',''])
-call s:hi('StringDelimiter', [137, 94], ['',''])
-call s:hi('Statement', [108, 66], ['',''])
+call s:hi('Comment', [65, 65], ['', ''])
+call s:hi('Number', [222, 95], ['', ''])
+call s:hi('Float', [222, 95], ['', ''])
+call s:hi('Boolean', [103, 168], ['', ''])
+call s:hi('String', [109, 30], ['', ''])
+call s:hi('Constant', [73, 23], ['', ''])
+call s:hi('Character', [174, 168], ['', ''])
+call s:hi('Delimiter', [137, 94], ['', ''])
+call s:hi('StringDelimiter', [137, 94], ['', ''])
+call s:hi('Statement', [108, 66], ['', ''])
 " case, default, etc.
 " hi Label ctermfg=
 
 " if else end
-call s:hi('Conditional', [110, 31], ['',''])
+call s:hi('Conditional', [110, 31], ['', ''])
 
 " while end
-call s:hi('Repeat', [68, 67], ['',''])
+call s:hi('Repeat', [68, 67], ['', ''])
 call s:hi('Todo', [161, 125], [s:dark_bg_2, s:light_bg_2])
-call s:hi('Function', [187, 58], ['',''])
+call s:hi('Function', [187, 58], ['', ''])
 
 " Macros
-call s:hi('Define', [173, 131], ['',''])
-call s:hi('Macro', [173, 131], ['',''])
-call s:hi('Include', [173, 131], ['',''])
-call s:hi('PreCondit', [173, 131], ['',''])
+call s:hi('Define', [173, 131], ['', ''])
+call s:hi('Macro', [173, 131], ['', ''])
+call s:hi('Include', [173, 131], ['', ''])
+call s:hi('PreCondit', [173, 131], ['', ''])
 
 
 " #!
-call s:hi('PreProc', [143, 58], ['',''])
+call s:hi('PreProc', [143, 58], ['', ''])
 
 " @abc
-call s:hi('Identifier', [217, 96], ['',''])
+call s:hi('Identifier', [217, 96], ['', ''])
 
 " AAA Abc
-call s:hi('Type', [179, 94], ['',''])
+call s:hi('Type', [179, 94], ['', ''])
 
 " + - * / <<
-call s:hi('Operator', [186, 131], ['',''])
+call s:hi('Operator', [186, 131], ['', ''])
 
 " super yield
-call s:hi('Keyword', [168, 168], ['',''])
+call s:hi('Keyword', [168, 168], ['', ''])
 
 " raise
-call s:hi('Exception', [161, 161], ['',''])
+call s:hi('Exception', [161, 161], ['', ''])
 "
 " hi StorageClass ctermfg=
-call s:hi('Structure', [116, 23], ['',''])
+call s:hi('Structure', [116, 23], ['', ''])
 " hi Typedef ctermfg=
 
 call s:hi('Error', [252, s:light_bg_1], [52, 174])
 call s:hi('ErrorMsg', [252, s:light_bg_1], [52, 168])
-call s:hi('Underlined', [181, 168], ['',''])
+call s:hi('Underlined', [181, 168], ['', ''])
 
 " set textwidth=80
 " set colorcolumn=+1
-call s:hi('ColorColumn', ['',''], [s:dark_bg - 1, s:light_bg - 2])
+call s:hi('ColorColumn', ['', ''], [s:dark_bg - 1, s:light_bg - 2])
 
 " GVIM only
 " hi Cursor ctermfg=
 " hi CursorIM ctermfg=
 
 " set cursorline cursorcolumn
-call s:hi('CursorLine', ['',''], [s:dark_bg - 1, s:light_bg - 1])
+call s:hi('CursorLine', ['', ''], [s:dark_bg - 1, s:light_bg - 1])
 call s:hi('CursorLineNr', [131, 131], [s:dark_bg - 1, s:light_bg - 1])
-call s:hi('CursorColumn', ['',''], [s:dark_bg - 1, s:light_bg - 1])
+call s:hi('CursorColumn', ['', ''], [s:dark_bg - 1, s:light_bg - 1])
 
-call s:hi('Directory', [187, 95], ['',''])
+call s:hi('Directory', [187, 95], ['', ''])
 
 call s:hi('DiffAdd',    ['NONE', 'NONE'], [24, 189])
 call s:hi('DiffDelete', ['NONE', 'NONE'], [95, 181])
@@ -234,34 +234,34 @@ call s:hi('Folded', [101, 101], [s:dark_bg + 1, s:light_bg - 2])
 " set foldcolumn=1
 call s:hi('FoldColumn', [144, 94], [s:dark_bg + 1, s:light_bg - 2])
 
-call s:hi('MatchParen', [232, s:light_bg_2], ['',''])
+call s:hi('MatchParen', [232, s:light_bg_2], ['', ''])
 
 " -- INSERT --
-call s:hi('ModeMsg', [173, 173], ['',''])
+call s:hi('ModeMsg', [173, 173], ['', ''])
 
 " let &showbreak = '> '
-call s:hi('NonText', [101, 101], ['',''])
+call s:hi('NonText', [101, 101], ['', ''])
 
-call s:hi('MoreMsg', [173, 173], ['',''])
+call s:hi('MoreMsg', [173, 173], ['', ''])
 
 " Popup menu
 call s:hi('Pmenu', [s:dark_bg + 1, 238], [224, 224])
 call s:hi('PmenuSel', [252, 252], [89, 89])
-call s:hi('PmenuSbar', ['',''], [65, 65])
-call s:hi('PmenuThumb', ['',''], [23, 23])
+call s:hi('PmenuSbar', ['', ''], [65, 65])
+call s:hi('PmenuThumb', ['', ''], [23, 23])
 
 call s:hi('Search', [252, 255], [24, 74])
 call s:hi('IncSearch', [220, 220], [s:dark_bg + 1, 238])
 
 " String delimiter, interpolation
-call s:hi('Special', [216, 173], ['',''])
+call s:hi('Special', [216, 173], ['', ''])
 " hi SpecialChar ctermfg=
 " hi SpecialComment ctermfg=
 " hi Tag ctermfg=
 " hi Debug ctermfg=
 
 " :map, listchars
-call s:hi('SpecialKey', [59, 145], ['',''])
+call s:hi('SpecialKey', [59, 145], ['', ''])
 
 " TODO: spell check
 call s:hi('SpellBad',   [252, 252], [95, 95])
@@ -272,19 +272,19 @@ call s:hi('SpellRare',  [252, 252], [95, 95])
 "
 call s:hi('StatusLine', [95, 95], [187, 187])
 call s:hi('StatusLineNC', [s:dark_bg + 2, s:light_bg - 2], [187, 238])
-call s:hi('TabLineFill', [s:dark_bg + 2, s:light_bg - 2], ['',''])
+call s:hi('TabLineFill', [s:dark_bg + 2, s:light_bg - 2], ['', ''])
 call s:hi('TabLineSel', [187, 187], [23, 66])
 call s:hi('TabLine', [s:dark_bg + 12, s:light_bg - 12], [s:dark_bg + 4, s:light_bg - 4])
 call s:hi('WildMenu', [95, 95], [184, 184])
 
 " :set all
-call s:hi('Title', [181, 88], ['',''])
+call s:hi('Title', [181, 88], ['', ''])
 
 " TODO
-call s:hi('Question', [179, 88], ['',''])
+call s:hi('Question', [179, 88], ['', ''])
 
 " Search hit bottom
-call s:hi('WarningMsg', [179, 88], ['',''])
+call s:hi('WarningMsg', [179, 88], ['', ''])
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -300,8 +300,8 @@ let g:indentLine_color_gui  = s:rgb_map[[s:dark_bg + 1, s:light_bg - 2][s:style_
 " vim-indent-guides
 " -----------------
 let g:indent_guides_auto_colors = 0
-call s:hi('IndentGuidesOdd', ['',''], [s:dark_bg - 1, s:light_bg + 1])
-call s:hi('IndentGuidesEven', ['',''], [s:dark_bg + 1, s:light_bg - 1])
+call s:hi('IndentGuidesOdd', ['', ''], [s:dark_bg - 1, s:light_bg + 1])
+call s:hi('IndentGuidesEven', ['', ''], [s:dark_bg + 1, s:light_bg - 1])
 
 " vim-scroll-position
 " -------------------
@@ -316,29 +316,29 @@ call s:hi('ScrollPositionJump',          [173, 173], [s:dark_bg + 1, s:light_bg 
 
 " vim-gitgutter
 " -------------
-call s:hi('GitGutterAdd', [38, 38], ['',''])
-call s:hi('GitGutterChange', [65, 65], ['',''])
-call s:hi('GitGutterDelete', [161, 161], ['',''])
-call s:hi('GitGutterChangeDelete', [168, 168], ['',''])
+call s:hi('GitGutterAdd', [38, 38], ['', ''])
+call s:hi('GitGutterChange', [65, 65], ['', ''])
+call s:hi('GitGutterDelete', [161, 161], ['', ''])
+call s:hi('GitGutterChangeDelete', [168, 168], ['', ''])
 
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces     
 " ---------------------------------------------------^^^^^
-call s:hi('ExtraWhitespace', ['',''], [s:dark_bg - 1, s:light_bg - 2])
+call s:hi('ExtraWhitespace', ['', ''], [s:dark_bg - 1, s:light_bg - 2])
 
 " vim-ruby
 " --------
 " " rubySymbol
 let ruby_operators = 1
-call s:hi('rubyClass', [31, 31], ['',''])
-" call s:hi('rubyInstanceVariable', [189, 189], ['',''])
-call s:hi('rubyRegexp', [186, 101], ['',''])
-call s:hi('rubyRegexpDelimiter', [168, 168], ['',''])
-call s:hi('rubyArrayDelimiter', [67, 38], ['',''])
-call s:hi('rubyBlockParameterList', [186, 94], ['',''])
-call s:hi('rubyCurlyBlockDelimiter', [144, 101], ['',''])
+call s:hi('rubyClass', [31, 31], ['', ''])
+" call s:hi('rubyInstanceVariable', [189, 189], ['', ''])
+call s:hi('rubyRegexp', [186, 101], ['', ''])
+call s:hi('rubyRegexpDelimiter', [168, 168], ['', ''])
+call s:hi('rubyArrayDelimiter', [67, 38], ['', ''])
+call s:hi('rubyBlockParameterList', [186, 94], ['', ''])
+call s:hi('rubyCurlyBlockDelimiter', [144, 101], ['', ''])
 
 " ARGV $stdout
-call s:hi('rubyPredefinedIdentifier', [230, 52], ['',''])
+call s:hi('rubyPredefinedIdentifier', [230, 52], ['', ''])
 " hi rubyRegexpSpecial
 
 hi CursorLine cterm=NONE
