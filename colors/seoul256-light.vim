@@ -37,7 +37,7 @@
 
 let s:master = get(split(globpath(&rtp, 'colors/seoul256.vim'), '\n'), 0, '')
 if !empty(s:master)
-  if g:colors_name == 'seoul256-light' && &background == 'dark'
+  if get(g:, 'colors_name', '') == 'seoul256-light' && &background == 'dark'
     set background=dark
   else
     set background=light

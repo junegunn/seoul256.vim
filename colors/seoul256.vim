@@ -89,7 +89,7 @@ if !exists('s:rgb_map')
   \ }
 endif
 
-silent! unlet s:style
+silent! unlet s:style s:seoul256_background
 
 " 1. If g:seoul256_background is found
 if exists('g:seoul256_background')

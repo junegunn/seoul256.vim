@@ -1,6 +1,12 @@
 Execute (Initialize):
   Save g:seoul256_background
 
+  function! Init(bg)
+    silent! unlet g:seoul256_background
+    colo default
+    execute 'set background='.a:bg
+  endfunction
+
   function! HI(group)
     redir => out
     execute "silent hi ".a:group
@@ -35,46 +41,136 @@ Execute (Initialize):
     AssertEqual 'light', &background
   endfunction
 
-Execute (default -> seoul256 = dark):
-  colo default
+Before (light default):
+  call Init('light')
+
+Execute (light default > colo seoul256 = dark seoul256):
   colo seoul256
   call AssertDark()
 
-Execute (seoul256 -> set background=dark = dark):
+Execute (light default > colo seoul256-light = seoul256-light):
+  colo seoul256-light
+  call AssertLight()
+  AssertEqual 'seoul256-light', g:colors_name
+
+Before (dark default):
+  call Init('dark')
+
+Execute (dark default > colo seoul256 = dark seoul256):
+  colo seoul256
+  call AssertDark()
+
+Execute (dark default > colo seoul256-light = seoul256-light):
+  colo seoul256-light
+  call AssertLight()
+  AssertEqual 'seoul256-light', g:colors_name
+
+Before (dark seoul256):
+  call Init('dark')
+  colo seoul256
+
+Execute (dark seoul256 > colo seoul256 = dark seoul256):
+  colo seoul256
+  call AssertDark()
+
+Execute (dark seoul256 > colo seoul256-light = seoul256-light):
+  colo seoul256-light
+  call AssertLight()
+  AssertEqual 'seoul256-light', g:colors_name
+
+Execute (dark seoul256 > set background=dark = dark seoul256):
   set background=dark
   call AssertDark()
 
-Execute (seoul256 -> set background=light = light):
+Execute (dark seoul256 > set background=light = light seoul256):
   set background=light
   call AssertLight()
   AssertEqual 'seoul256', g:colors_name
 
-Execute (seoul256 (light) -> set background=dark = dark):
-  set background=dark
-  call AssertDark()
+Before (light seoul256):
+  call Init('dark')
+  colo seoul256
+  set background=light
 
-Execute (default -> seoul256-light = light):
-  colo default
+Execute (light seoul256 > colo seoul256 = light seoul256):
+  colo seoul256
+  call AssertLight()
+  AssertEqual 'seoul256', g:colors_name
+
+Execute (light seoul256 > colo seoul256-light = seoul256-light):
   colo seoul256-light
   call AssertLight()
   AssertEqual 'seoul256-light', g:colors_name
 
-Execute (seoul256-light -> seoul256 = dark):
-  colo seoul256
-  call AssertDark()
-
-Execute (seoul256-light -> set background=dark = seoul256):
-  colo seoul256-light
+Execute (light seoul256 > set background=dark = dark seoul256):
   set background=dark
   call AssertDark()
 
-Execute (seoul256-light -> set background=light = seoul256-light):
+Execute (light seoul256 > set background=light = light seoul256):
+  set background=light
+  call AssertLight()
+  AssertEqual 'seoul256', g:colors_name
+
+Before (light seoul256):
+  call Init('dark')
   colo seoul256-light
+
+Execute (seoul256-light > colo seoul256 = dark):
+  colo seoul256
+  call AssertDark()
+
+Execute (seoul256-light > colo seoul256-light = seoul256-light):
+  colo seoul256-light
+  call AssertLight()
+  AssertEqual 'seoul256-light', g:colors_name
+
+Execute (seoul256-light > set background=dark = dark seoul256):
+  set background=dark
+  call AssertDark()
+
+Execute (seoul256-light > set background=light = seoul256-light):
   set background=light
   call AssertLight()
   AssertEqual 'seoul256-light', g:colors_name
 
-Execute (Dark g:seoul256_background):
+Before:
+  call Init('light')
+
+Execute (default > g:seoul256_background (dark) > colo seoul256 = dark seoul256):
+  let g:seoul256_background = 233
+  colo seoul256
+  call AssertDark(233)
+
+Execute (default > g:seoul256_background (light) > colo seoul256 = light seoul256):
+  let g:seoul256_background = 255
+  colo seoul256
+  call AssertLight(255)
+  AssertEqual 'seoul256', g:colors_name
+
+Execute (default > g:seoul256_background (invalid) > colo seoul256 = dark seoul256):
+  let g:seoul256_background = 100
+  colo seoul256
+  call AssertDark()
+  AssertEqual 'seoul256', g:colors_name
+
+Execute (default > g:seoul256_background (dark) > colo seoul256-light = dark seoul256):
+  let g:seoul256_background = 233
+  colo seoul256-light
+  call AssertDark(233)
+
+Execute (default > g:seoul256_background (light) > colo seoul256-light = seoul256-light):
+  let g:seoul256_background = 256
+  colo seoul256-light
+  call AssertLight(256)
+  AssertEqual 'seoul256-light', g:colors_name
+
+Execute (default > g:seoul256_background (invalid) > colo seoul256-light = seoul256-light):
+  let g:seoul256_background = 100
+  colo seoul256-light
+  call AssertLight()
+  AssertEqual 'seoul256-light', g:colors_name
+
+Execute (dark g:seoul256_background):
   for bg in range(233, 239)
     let g:seoul256_background = bg
     colo seoul256
@@ -86,7 +182,7 @@ Execute (Dark g:seoul256_background):
     call AssertDark(bg)
   endfor
 
-Execute (Light g:seoul256_background):
+Execute (light g:seoul256_background):
   for bg in range(252, 256)
     let g:seoul256_background = bg
     colo seoul256
@@ -98,52 +194,13 @@ Execute (Light g:seoul256_background):
     call AssertLight(bg)
   endfor
 
-Execute (default -> g:seoul256_background (dark) -> seoul256 = seoul256):
-  colo default
-  let g:seoul256_background = 233
-  colo seoul256
-  call AssertDark(233)
-
-Execute (default -> g:seoul256_background (light) -> seoul256 = seoul256 (light)):
-  colo default
-  let g:seoul256_background = 255
-  colo seoul256
-  call AssertLight(255)
-  AssertEqual 'seoul256', g:colors_name
-
-Execute (default -> g:seoul256_background (invalid) -> seoul256 = seoul256):
-  colo default
-  let g:seoul256_background = 100
-  colo seoul256
-  call AssertDark()
-  AssertEqual 'seoul256', g:colors_name
-
-Execute (default -> g:seoul256_background (dark) -> seoul256-light = seoul256):
-  colo default
-  let g:seoul256_background = 233
-  colo seoul256-light
-  call AssertDark(233)
-
-Execute (default -> g:seoul256_background (light) -> seoul256-light = seoul256-light):
-  colo default
-  let g:seoul256_background = 256
-  colo seoul256-light
-  call AssertLight(256)
-  AssertEqual 'seoul256-light', g:colors_name
-
-Execute (default -> g:seoul256_background (invalid) -> seoul256-light = seoul256-light):
-  colo default
-  let g:seoul256_background = 100
-  colo seoul256-light
-  call AssertLight()
-  AssertEqual 'seoul256-light', g:colors_name
-
 Execute (Cleanup):
+  AssertEqual 'default', g:colors_name
+
+  delf Init
   delf HI
   delf AssertDark
   delf AssertLight
-  unlet g:seoul256_background
 
   Restore
-  colo default
   source $MYVIMRC
