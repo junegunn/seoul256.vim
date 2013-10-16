@@ -15,7 +15,7 @@ Works on 256-color terminal or on GVim.
 
 ![seoul256](https://raw.github.com/junegunn/seoul256.vim/screenshot/seoul256.png)
 
-### seoul256-light
+### seoul256 (light version)
 
 ![seoul256-light](https://raw.github.com/junegunn/seoul256.vim/screenshot/seoul256-light.png)
 
@@ -51,24 +51,27 @@ colo seoul256
 
 " Light color scheme
 colo seoul256-light
+
+" Switch
+set background=dark
+set background=light
 ```
 
 Change background color
 -----------------------
 
 ```vim
-" seoul256:
+" seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 237
 let g:seoul256_background = 236
 colo seoul256
 
-" seoul256-light:
+" seoul256 (light):
 "   Range:   252 (darkest) ~ 256 (lightest)
 "   Default: 253
 let g:seoul256_background = 256
-colo seoul256-light
-
+colo seoul256
 ```
 
 Author

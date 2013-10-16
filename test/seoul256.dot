@@ -1,0 +1,48 @@
+digraph G {
+  rankdir = LR;
+  nodesep = 0.1;
+  ranksep = 0.1;
+
+  graph [fontname = "Gill Sans", fontsize = 12];
+  node  [fontname = "Gill Sans", fontsize = 12];
+  edge  [fontname = "Gill Sans", fontsize = 12];
+
+  dbg [label="g:seoul256_background = dark", shape=record];
+  lbg [label="g:seoul256_background = light", shape=record];
+  xbg [label="g:seoul256_background = invalid", shape=record];
+
+  default  [label="dark default", shape=record];
+  defaultl [label="light default", shape=record];
+
+  seoul256  [label="dark seoul256"];
+  seoul256l [label="light seoul256"];
+  seoul256_light [label="seoul256-light"];
+
+  defaultl -> seoul256 [label="colo seoul256"];
+  defaultl -> seoul256_light [label="colo seoul256-light"];
+
+  default  -> seoul256 [label="colo seoul256"];
+  default  -> seoul256_light [label="colo seoul256-light"];
+
+  seoul256 -> seoul256 [label="colo seoul256"];
+  seoul256 -> seoul256 [label="set background=dark"];
+  seoul256 -> seoul256l [label="set background=light"];
+  seoul256 -> seoul256_light [label="colo seoul256-light"];
+
+  seoul256l -> seoul256l [label="colo seoul256"];
+  seoul256l -> seoul256l [label="set background=light"];
+  seoul256l -> seoul256 [label="set background=dark"];
+  seoul256l -> seoul256_light [label="colo seoul256-light"];
+
+  seoul256_light -> seoul256 [label="colo seoul256"];
+  seoul256_light -> seoul256 [label="set background=dark"];
+  seoul256_light -> seoul256_light [label="set background=light"];
+  seoul256_light -> seoul256_light [label="colo seoul256-light"];
+
+  dbg -> seoul256 [label="colo seoul256"];
+  dbg -> seoul256 [label="colo seoul256-light"];
+  lbg -> seoul256l [label="colo seoul256"];
+  lbg -> seoul256_light [label="colo seoul256-light"];
+  xbg -> seoul256 [label="colo seoul256"];
+  xbg -> seoul256_light [label="colo seoul256-light"];
+}

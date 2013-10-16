@@ -8,8 +8,8 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.2.12
-" Last Updated: October 5, 2013
+" Version:      1.3.0
+" Last Updated: October 16, 2013
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -35,7 +35,8 @@
 " OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 " WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-let s:rgb_map = {
+if !exists('s:rgb_map')
+  let s:rgb_map = {
   \ 'NONE': 'NONE',
   \ 16: "#000000", 17: "#0C0077", 18: "#14009F", 19: "#1B00C5", 20: "#2200E8",
   \ 21: "#2900FF", 22: "#007600", 23: "#007475", 24: "#00739E", 25: "#0071C3",
@@ -85,165 +86,201 @@ let s:rgb_map = {
   \ 241: "#757575", 242: "#7F7F7F", 243: "#888888", 244: "#929292", 245: "#9B9B9B",
   \ 246: "#A4A4A4", 247: "#ADADAD", 248: "#B6B6B6", 249: "#BFBFBF", 250: "#C7C7C7",
   \ 251: "#D0D0D0", 252: "#D8D8D8", 253: "#E0E0E0", 254: "#E9E9E9", 255: "#F1F1F1"
-\ }
+  \ }
+endif
+
+silent! unlet s:style s:seoul256_background
+
+" 1. If g:seoul256_background is found
+if exists('g:seoul256_background')
+  let s:seoul256_background = g:seoul256_background
+  if s:seoul256_background >= 233 && s:seoul256_background <= 239
+    let s:style = 'dark'
+  elseif s:seoul256_background >= 252 && s:seoul256_background <= 256
+    let s:style = 'light'
+  else
+    unlet s:seoul256_background
+  endif
+endif
+
+if !exists('s:style')
+  " 2. If g:colors_name is NOT 'seoul256' -> dark version
+  if get(g:, 'colors_name', '') != 'seoul256'
+    let s:style = 'dark'
+  " 3. Follow &background setting
+  else
+    let s:style = &background
+  endif
+endif
+
+" Background colors
+if s:style == 'dark'
+  let s:dark_bg  = get(s:, 'seoul256_background', 237)
+  let s:light_bg = 252
+else
+  let s:dark_bg  = 237
+  let s:light_bg = get(s:, 'seoul256_background', 253)
+endif
+let s:dark_bg_2 = s:dark_bg > 233 ? s:dark_bg - 2 : 16
+let s:light_bg_1 = min([s:light_bg + 1, 256])
+let s:light_bg_2 = min([s:light_bg + 2, 256])
+
+let s:style_idx = s:style == 'light'
 
 function! s:hi(item, fg, bg)
-  if empty(a:bg)
-    execute printf("highlight %s ctermfg=%s guifg=%s", a:item, a:fg, s:rgb_map[a:fg])
-  elseif empty(a:fg)
-    execute printf("highlight %s ctermbg=%s guibg=%s", a:item, a:bg, s:rgb_map[a:bg])
-  else
-    execute printf("highlight %s ctermfg=%s guifg=%s ctermbg=%s guibg=%s", a:item, a:fg, s:rgb_map[a:fg], a:bg, s:rgb_map[a:bg])
+  let fg = a:fg[s:style_idx] > 255 ? 231 : a:fg[s:style_idx]
+  let bg = a:bg[s:style_idx] > 255 ? 231 : a:bg[s:style_idx]
+
+  if !empty(fg)
+    execute printf("highlight %s ctermfg=%s guifg=%s", a:item, fg, s:rgb_map[fg])
+  endif
+  if !empty(bg)
+    execute printf("highlight %s ctermbg=%s guibg=%s", a:item, bg, s:rgb_map[bg])
   endif
 endfunction
-
-let s:seoul256_background = min([max([get(g:, 'seoul256_background', 237), 233]), 239])
-let s:seoul256_background_d2 = s:seoul256_background > 233 ? s:seoul256_background - 2 : 16
 
 silent! unlet g:colors_name
 hi clear
 if exists("syntax_on")
   syntax reset
 endif
-call s:hi('Normal', 252, s:seoul256_background)
-set background=dark
+call s:hi('Normal', [252, 239], [s:dark_bg, s:light_bg])
 
-call s:hi('LineNr', 101, s:seoul256_background + 1)
-call s:hi('Visual', '', 23)
-call s:hi('VisualNOS', '', 23)
+call s:hi('LineNr', [101, 101], [s:dark_bg + 1, s:light_bg - 2])
+call s:hi('Visual', ['', ''], [23, 152])
+call s:hi('VisualNOS', ['', ''], [23, 152])
 
-call s:hi('Comment', 65, '')
-call s:hi('Number', 222, '')
-call s:hi('Float', 222, '')
-call s:hi('Boolean', 103, '')
-call s:hi('String', 109, '')
-call s:hi('Constant', 73, '')
-call s:hi('Character', 174, '')
-call s:hi('Delimiter', 137, '')
-call s:hi('StringDelimiter', 137, '')
-call s:hi('Statement', 108, '')
+call s:hi('Comment', [65, 65], ['', ''])
+call s:hi('Number', [222, 95], ['', ''])
+call s:hi('Float', [222, 95], ['', ''])
+call s:hi('Boolean', [103, 168], ['', ''])
+call s:hi('String', [109, 30], ['', ''])
+call s:hi('Constant', [73, 23], ['', ''])
+call s:hi('Character', [174, 168], ['', ''])
+call s:hi('Delimiter', [137, 94], ['', ''])
+call s:hi('StringDelimiter', [137, 94], ['', ''])
+call s:hi('Statement', [108, 66], ['', ''])
 " case, default, etc.
 " hi Label ctermfg=
 
 " if else end
-call s:hi('Conditional', 110, '')
+call s:hi('Conditional', [110, 31], ['', ''])
 
 " while end
-call s:hi('Repeat', 68, '')
-call s:hi('Todo', 161, s:seoul256_background_d2)
-call s:hi('Function', 187, '')
+call s:hi('Repeat', [68, 67], ['', ''])
+call s:hi('Todo', [161, 125], [s:dark_bg_2, s:light_bg_2])
+call s:hi('Function', [187, 58], ['', ''])
 
 " Macros
-call s:hi('Define', 173, '')
-call s:hi('Macro', 173, '')
-call s:hi('Include', 173, '')
-call s:hi('PreCondit', 173, '')
+call s:hi('Define', [173, 131], ['', ''])
+call s:hi('Macro', [173, 131], ['', ''])
+call s:hi('Include', [173, 131], ['', ''])
+call s:hi('PreCondit', [173, 131], ['', ''])
 
 
 " #!
-call s:hi('PreProc', 143, '')
+call s:hi('PreProc', [143, 58], ['', ''])
 
 " @abc
-call s:hi('Identifier', 217, '')
+call s:hi('Identifier', [217, 96], ['', ''])
 
 " AAA Abc
-call s:hi('Type', 179, '')
+call s:hi('Type', [179, 94], ['', ''])
 
 " + - * / <<
-call s:hi('Operator', 186, '')
+call s:hi('Operator', [186, 131], ['', ''])
 
 " super yield
-call s:hi('Keyword', 168, '')
+call s:hi('Keyword', [168, 168], ['', ''])
 
 " raise
-call s:hi('Exception', 161, '')
+call s:hi('Exception', [161, 161], ['', ''])
 "
 " hi StorageClass ctermfg=
-call s:hi('Structure', 116, '')
+call s:hi('Structure', [116, 23], ['', ''])
 " hi Typedef ctermfg=
 
-call s:hi('Error', 252, 52)
-call s:hi('ErrorMsg', 252, 52)
-call s:hi('Underlined', 181, '')
+call s:hi('Error', [252, s:light_bg_1], [52, 174])
+call s:hi('ErrorMsg', [252, s:light_bg_1], [52, 168])
+call s:hi('Underlined', [181, 168], ['', ''])
 
 " set textwidth=80
 " set colorcolumn=+1
-call s:hi('ColorColumn', '', s:seoul256_background - 1)
+call s:hi('ColorColumn', ['', ''], [s:dark_bg - 1, s:light_bg - 2])
 
 " GVIM only
 " hi Cursor ctermfg=
 " hi CursorIM ctermfg=
 
 " set cursorline cursorcolumn
-call s:hi('CursorLine', '', s:seoul256_background - 1)
-call s:hi('CursorLineNr', 131, s:seoul256_background - 1)
-call s:hi('CursorColumn', '', s:seoul256_background - 1)
+call s:hi('CursorLine', ['', ''], [s:dark_bg - 1, s:light_bg - 1])
+call s:hi('CursorLineNr', [131, 131], [s:dark_bg - 1, s:light_bg - 1])
+call s:hi('CursorColumn', ['', ''], [s:dark_bg - 1, s:light_bg - 1])
 
-call s:hi('Directory', 187, '')
+call s:hi('Directory', [187, 95], ['', ''])
 
-call s:hi('DiffAdd', 'NONE', 24)
-call s:hi('DiffDelete', 'NONE', 95)
-call s:hi('DiffChange', 'NONE', 240)
-call s:hi('DiffText', 'NONE', 52)
+call s:hi('DiffAdd',    ['NONE', 'NONE'], [24, 189])
+call s:hi('DiffDelete', ['NONE', 'NONE'], [95, 181])
+call s:hi('DiffChange', ['NONE', 'NONE'], [240, 151])
+call s:hi('DiffText',   ['NONE', 'NONE'], [52, 224])
 
-call s:hi('DiffText', 'NONE', 52)
-call s:hi('VertSplit', s:seoul256_background_d2, s:seoul256_background_d2)
-call s:hi('Folded', 101, s:seoul256_background + 1)
+call s:hi('VertSplit', [s:dark_bg_2, s:light_bg - 3], [s:dark_bg_2, s:light_bg - 3])
+call s:hi('Folded', [101, 101], [s:dark_bg + 1, s:light_bg - 2])
 
 " set foldcolumn=1
-call s:hi('FoldColumn', 144, s:seoul256_background + 1)
+call s:hi('FoldColumn', [144, 94], [s:dark_bg + 1, s:light_bg - 2])
 
-call s:hi('MatchParen', 232, '')
+call s:hi('MatchParen', ['', ''], [s:dark_bg + 3, s:light_bg - 3])
 
 " -- INSERT --
-call s:hi('ModeMsg', 173, '')
+call s:hi('ModeMsg', [173, 173], ['', ''])
 
 " let &showbreak = '> '
-call s:hi('NonText', 101, '')
+call s:hi('NonText', [101, 101], ['', ''])
 
-call s:hi('MoreMsg', 173, '')
+call s:hi('MoreMsg', [173, 173], ['', ''])
 
 " Popup menu
-call s:hi('Pmenu', s:seoul256_background + 1, 224)
-call s:hi('PmenuSel', 252, 89)
-call s:hi('PmenuSbar', '', 65)
-call s:hi('PmenuThumb', '', 23)
+call s:hi('Pmenu', [s:dark_bg + 1, 238], [224, 224])
+call s:hi('PmenuSel', [252, 252], [89, 89])
+call s:hi('PmenuSbar', ['', ''], [65, 65])
+call s:hi('PmenuThumb', ['', ''], [23, 23])
 
-call s:hi('Search', 252, 24)
-call s:hi('IncSearch', 220, s:seoul256_background + 1)
+call s:hi('Search', [252, 255], [24, 74])
+call s:hi('IncSearch', [220, 220], [s:dark_bg + 1, 238])
 
 " String delimiter, interpolation
-call s:hi('Special', 216, '')
+call s:hi('Special', [216, 173], ['', ''])
 " hi SpecialChar ctermfg=
 " hi SpecialComment ctermfg=
 " hi Tag ctermfg=
 " hi Debug ctermfg=
 
 " :map, listchars
-call s:hi('SpecialKey', 59, '')
+call s:hi('SpecialKey', [59, 145], ['', ''])
 
 " TODO: spell check
-call s:hi('SpellBad', 252, 95)
-call s:hi('SpellCap', 252, 95)
-call s:hi('SpellLocal', 252, 95)
-call s:hi('SpellRare', 252, 95)
+call s:hi('SpellBad',   [252, 252], [95, 95])
+call s:hi('SpellCap',   [252, 252], [95, 95])
+call s:hi('SpellLocal', [252, 252], [95, 95])
+call s:hi('SpellRare',  [252, 252], [95, 95])
 
 "
-call s:hi('StatusLine', 95, 187)
-call s:hi('StatusLineNC', s:seoul256_background + 2, 187)
-call s:hi('TabLineFill', s:seoul256_background + 2, '')
-call s:hi('TabLineSel', 187, 23)
-call s:hi('TabLine', s:seoul256_background + 12, s:seoul256_background + 4)
-call s:hi('WildMenu', 95, 184)
+call s:hi('StatusLine', [95, 95], [187, 187])
+call s:hi('StatusLineNC', [s:dark_bg + 2, s:light_bg - 2], [187, 238])
+call s:hi('TabLineFill', [s:dark_bg + 2, s:light_bg - 2], ['', ''])
+call s:hi('TabLineSel', [187, 187], [23, 66])
+call s:hi('TabLine', [s:dark_bg + 12, s:light_bg - 12], [s:dark_bg + 4, s:light_bg - 4])
+call s:hi('WildMenu', [95, 95], [184, 184])
 
 " :set all
-call s:hi('Title', 181, '')
+call s:hi('Title', [181, 88], ['', ''])
 
 " TODO
-call s:hi('Question', 179, '')
+call s:hi('Question', [179, 88], ['', ''])
 
 " Search hit bottom
-call s:hi('WarningMsg', 179, '')
+call s:hi('WarningMsg', [179, 88], ['', ''])
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
@@ -251,56 +288,57 @@ call s:hi('WarningMsg', 179, '')
 
 " indentLine
 " ----------
-call s:hi('Conceal', s:seoul256_background + 1, s:seoul256_background)
-call s:hi('Ignore', s:seoul256_background + 1, s:seoul256_background)
-let g:indentLine_color_term = s:seoul256_background + 1
-let g:indentLine_color_gui  = s:rgb_map[s:seoul256_background + 1]
+call s:hi('Conceal', [s:dark_bg + 1, s:light_bg - 2], [s:dark_bg, s:light_bg])
+call s:hi('Ignore', [s:dark_bg + 1, s:light_bg - 2], [s:dark_bg, s:light_bg])
+let g:indentLine_color_term = [s:dark_bg + 1, s:light_bg - 2][s:style_idx]
+let g:indentLine_color_gui  = s:rgb_map[[s:dark_bg + 1, s:light_bg - 2][s:style_idx]]
 
 " vim-indent-guides
 " -----------------
 let g:indent_guides_auto_colors = 0
-call s:hi('IndentGuidesOdd', '', s:seoul256_background - 1)
-call s:hi('IndentGuidesEven', '', s:seoul256_background + 1)
+call s:hi('IndentGuidesOdd', ['', ''], [s:dark_bg - 1, s:light_bg + 1])
+call s:hi('IndentGuidesEven', ['', ''], [s:dark_bg + 1, s:light_bg - 1])
 
 " vim-scroll-position
 " -------------------
-call s:hi('SignColumn', 173, s:seoul256_background)
-call s:hi('ScrollPositionMarker', 173, s:seoul256_background + 1)
-call s:hi('ScrollPositionVisualBegin', 168, s:seoul256_background + 1)
-call s:hi('ScrollPositionVisualMiddle', 168, s:seoul256_background + 1)
-call s:hi('ScrollPositionVisualEnd', 168, s:seoul256_background + 1)
-call s:hi('ScrollPositionVisualOverlap', 168, s:seoul256_background + 1)
-call s:hi('ScrollPositionChange', 173, s:seoul256_background + 1)
-call s:hi('ScrollPositionJump', 173, s:seoul256_background + 1)
+call s:hi('SignColumn',                  [173, 173], [s:dark_bg, s:light_bg])
+call s:hi('ScrollPositionMarker',        [173, 173], [s:dark_bg + 1, s:light_bg - 2])
+call s:hi('ScrollPositionVisualBegin',   [168, 88],  [s:dark_bg + 1, s:light_bg - 2])
+call s:hi('ScrollPositionVisualMiddle',  [168, 88],  [s:dark_bg + 1, s:light_bg - 2])
+call s:hi('ScrollPositionVisualEnd',     [168, 88],  [s:dark_bg + 1, s:light_bg - 2])
+call s:hi('ScrollPositionVisualOverlap', [168, 88],  [s:dark_bg + 1, s:light_bg - 2])
+call s:hi('ScrollPositionChange',        [173, 173], [s:dark_bg + 1, s:light_bg - 2])
+call s:hi('ScrollPositionJump',          [173, 173], [s:dark_bg + 1, s:light_bg - 2])
 
 " vim-gitgutter
 " -------------
-call s:hi('GitGutterAdd', 38, '')
-call s:hi('GitGutterChange', 65, '')
-call s:hi('GitGutterDelete', 161, '')
-call s:hi('GitGutterChangeDelete', 168, '')
+call s:hi('GitGutterAdd', [38, 38], ['', ''])
+call s:hi('GitGutterChange', [65, 65], ['', ''])
+call s:hi('GitGutterDelete', [161, 161], ['', ''])
+call s:hi('GitGutterChangeDelete', [168, 168], ['', ''])
 
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces     
 " ---------------------------------------------------^^^^^
-call s:hi('ExtraWhitespace', '', s:seoul256_background - 1)
+call s:hi('ExtraWhitespace', ['', ''], [s:dark_bg - 1, s:light_bg - 2])
 
 " vim-ruby
 " --------
 " " rubySymbol
 let ruby_operators = 1
-call s:hi('rubyClass', 31, '')
-" call s:hi('rubyInstanceVariable', 189, '')
-call s:hi('rubyRegexp', 186, '')
-call s:hi('rubyRegexpDelimiter', 168, '')
-call s:hi('rubyArrayDelimiter', 67, '')
-call s:hi('rubyBlockParameterList', 186, '')
-call s:hi('rubyCurlyBlockDelimiter', 144, '')
+call s:hi('rubyClass', [31, 31], ['', ''])
+" call s:hi('rubyInstanceVariable', [189, 189], ['', ''])
+call s:hi('rubyRegexp', [186, 101], ['', ''])
+call s:hi('rubyRegexpDelimiter', [168, 168], ['', ''])
+call s:hi('rubyArrayDelimiter', [67, 38], ['', ''])
+call s:hi('rubyBlockParameterList', [186, 94], ['', ''])
+call s:hi('rubyCurlyBlockDelimiter', [144, 101], ['', ''])
 
 " ARGV $stdout
-call s:hi('rubyPredefinedIdentifier', 230, '')
+call s:hi('rubyPredefinedIdentifier', [230, 52], ['', ''])
 " hi rubyRegexpSpecial
 
 hi CursorLine cterm=NONE
 hi CursorLineNr cterm=NONE
 
 let g:colors_name = "seoul256"
+let &background = s:style
