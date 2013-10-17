@@ -40,7 +40,7 @@ digraph G {
   seoul256_light -> seoul256_light [label="colo seoul256-light"];
 
   dbg -> seoul256 [label="colo seoul256"];
-  dbg -> seoul256 [label="colo seoul256-light"];
+  dbg -> seoul256_light [label="colo seoul256-light"];
   lbg -> seoul256l [label="colo seoul256"];
   lbg -> seoul256_light [label="colo seoul256-light"];
   xbg -> seoul256 [label="colo seoul256"];

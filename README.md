@@ -46,7 +46,7 @@ Color schemes
 -------------
 
 ```vim
-" Dark color scheme
+" Unified color scheme (default: dark)
 colo seoul256
 
 " Light color scheme
@@ -73,6 +73,13 @@ colo seoul256
 let g:seoul256_background = 256
 colo seoul256
 ```
+
+If `g:seoul256_background` is set, seoul256 will choose the right version based
+on the value and `set background=dark/light` will not switch versions.
+
+However, seoul256-light will choose the light one regardless of the value.
+If the value doesn't fall within the allowed range of light background, the
+default 253 will be chosen as the background color.
 
 Author
 ------
