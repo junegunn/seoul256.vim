@@ -89,6 +89,9 @@ if !exists('s:rgb_map')
   \ }
 endif
 
+let s:background  = &background
+let s:colors_name = get(g:, 'colors_name', '')
+
 silent! unlet s:style s:seoul256_background
 
 " 1. If g:seoul256_background is found
@@ -105,7 +108,7 @@ endif
 
 if !exists('s:style')
   " 2. If g:colors_name is NOT 'seoul256' -> dark version
-  if get(g:, 'colors_name', '') != 'seoul256'
+  if s:colors_name != 'seoul256'
     let s:style = 'dark'
   " 3. Follow &background setting
   else
@@ -116,7 +119,7 @@ endif
 " Background colors
 if s:style == 'dark'
   let s:dark_bg  = get(s:, 'seoul256_background', 237)
-  let s:light_bg = 252
+  let s:light_bg = 253
 else
   let s:dark_bg  = 237
   let s:light_bg = get(s:, 'seoul256_background', 253)
@@ -340,5 +343,9 @@ call s:hi('rubyPredefinedIdentifier', [230, 52], ['', ''])
 hi CursorLine cterm=NONE
 hi CursorLineNr cterm=NONE
 
-let g:colors_name = "seoul256"
-let &background = s:style
+let g:colors_name = 'seoul256'
+if s:colors_name != g:colors_name || s:background == s:style
+  let &background = s:style
+else
+  let &background = s:background
+endif

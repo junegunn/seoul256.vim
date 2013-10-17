@@ -35,17 +35,31 @@
 " OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 " WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-let s:master = get(split(globpath(&rtp, 'colors/seoul256.vim'), '\n'), 0, '')
+let s:master    = get(split(globpath(&rtp, 'colors/seoul256.vim'), '\n'), 0, '')
+let s:custom_bg = get(g:, 'seoul256_background', 253)
+let s:dark      = s:custom_bg >= 233 && s:custom_bg <= 239
+
 if !empty(s:master)
-  if get(g:, 'colors_name', '') == 'seoul256-light' && &background == 'dark'
-    set background=dark
-  else
-    set background=light
-  endif
-  let g:colors_name = 'seoul256'
-  execute 'silent source '.s:master
+  try
+    " Ignore g:seoul256_background and force light version
+    if s:dark
+      unlet g:seoul256_background
+    endif
+
+    if get(g:, 'colors_name', '') == 'seoul256-light' && &background == 'dark'
+      set background=dark
+    else
+      set background=light
+    endif
+    let g:colors_name = 'seoul256'
+    execute 'silent source '.s:master
+    let g:colors_name = &background == 'dark' ? 'seoul256' : 'seoul256-light'
+  finally
+    if s:dark
+      let g:seoul256_background = s:custom_bg
+    endif
+  endtry
 else
   echom 'seoul256.vim not found'
 endif
 
-let g:colors_name = &background == 'dark' ? 'seoul256' : 'seoul256-light'
