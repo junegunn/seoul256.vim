@@ -224,7 +224,7 @@ call s:hi('Directory', [187, 95], ['', ''])
 
 call s:hi('DiffAdd',    ['NONE', 'NONE'], [24, 189])
 call s:hi('DiffDelete', ['NONE', 'NONE'], [95, 181])
-call s:hi('DiffChange', ['NONE', 'NONE'], [240, 151])
+call s:hi('DiffChange', ['NONE', 'NONE'], [s:dark_bg + 3, 151])
 call s:hi('DiffText',   ['NONE', 'NONE'], [52, 224])
 
 call s:hi('VertSplit', [s:dark_bg_2, s:light_bg - 3], [s:dark_bg_2, s:light_bg - 3])
