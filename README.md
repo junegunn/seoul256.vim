@@ -13,11 +13,11 @@ Works on 256-color terminal or on GVim.
 
 ### seoul256
 
-![seoul256](https://raw.github.com/junegunn/seoul256.vim/screenshot/seoul256.png)
+![seoul256](https://raw.github.com/junegunn/i/master/seoul256.png)
 
 ### seoul256 (light version)
 
-![seoul256-light](https://raw.github.com/junegunn/seoul256.vim/screenshot/seoul256-light.png)
+![seoul256-light](https://raw.github.com/junegunn/i/master/seoul256-light.png)
 
 Installation
 ------------
