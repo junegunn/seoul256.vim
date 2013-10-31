@@ -81,6 +81,12 @@ However, seoul256-light will choose the light one regardless of the value.
 If the value doesn't fall within the allowed range of light background, the
 default 253 will be chosen as the background color.
 
+iTerm2 color scheme
+-------------------
+
+Check out [seoul256-iTerm2](https://github.com/mikker/seoul256-iTerm2) by
+[Mikkel Malmberg](https://github.com/mikker).
+
 Author
 ------
 
