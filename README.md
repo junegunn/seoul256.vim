@@ -60,6 +60,8 @@ set background=light
 Change background color
 -----------------------
 
+![seoul256-bg](https://raw.github.com/junegunn/i/master/seoul256-bg.png)
+
 ```vim
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
