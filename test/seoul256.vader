@@ -220,4 +220,4 @@ Execute (Cleanup):
   delf AssertLight
 
   Restore
-  source $MYVIMRC
+  silent! source $MYVIMRC
