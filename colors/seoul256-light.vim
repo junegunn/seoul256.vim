@@ -36,14 +36,26 @@
 " WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 let s:master    = get(split(globpath(&rtp, 'colors/seoul256.vim'), '\n'), 0, '')
-let s:custom_bg = get(g:, 'seoul256_background', 253)
-let s:dark      = s:custom_bg >= 233 && s:custom_bg <= 239
+let s:custom_bg = get(g:, 'seoul256_light_background', get(g:, 'seoul256_background', 253))
+let s:light     = s:custom_bg >= 252 && s:custom_bg <= 256
+let s:var_found = exists('g:seoul256_background')
+let s:light_var_found = exists('g:seoul256_light_background')
 
 if !empty(s:master)
   try
-    " Ignore g:seoul256_background and force light version
-    if s:dark
+    " Backup current g:seoul256_background
+    if s:var_found
+      let s:backup = g:seoul256_background
+    endif
+
+    " Invalid range. Force the default light version.
+    if !s:light && s:var_found
       unlet g:seoul256_background
+    endif
+
+    " g:seoul256_light_background is found, use it
+    if s:light && s:light_var_found
+      let g:seoul256_background = s:custom_bg
     endif
 
     if get(g:, 'colors_name', '') == 'seoul256-light' && &background == 'dark'
@@ -55,8 +67,9 @@ if !empty(s:master)
     execute 'silent source '.s:master
     let g:colors_name = &background == 'dark' ? 'seoul256' : 'seoul256-light'
   finally
-    if s:dark
-      let g:seoul256_background = s:custom_bg
+    " Revert g:seoul256_background
+    if s:var_found
+      let g:seoul256_background = s:backup
     endif
   endtry
 else

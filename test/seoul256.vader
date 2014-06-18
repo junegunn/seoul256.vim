@@ -1,8 +1,8 @@
 Execute (Initialize):
-  Save g:seoul256_background
+  Save g:seoul256_background g:seoul256_light_background
 
   function! Init(bg)
-    silent! unlet g:seoul256_background
+    unlet! g:seoul256_background g:seoul256_light_background
     colo default
     execute 'set background='.a:bg
   endfunction
@@ -210,6 +210,32 @@ Execute (light g:seoul256_background -> colo seoul256 -> set background=dark = l
   call AssertLight(255)
   set background=dark
   call AssertLight(255, 'dark')
+
+Execute (dark g:seoul256_background + g:seoul256_light_background -> colo seoul256-light = light seoul256):
+  let g:seoul256_background = 236
+  colo seoul256
+  call AssertDark(236)
+  colo seoul256-light
+  call AssertLight(253)
+
+  let g:seoul256_light_background = 255
+  colo seoul256
+  call AssertDark(236)
+  colo seoul256-light
+  call AssertLight(255)
+
+  " g:seoul256_background should still be 236
+  colo seoul256
+  call AssertDark(236)
+
+  " Invalid g:seoul256_light_background
+  let g:seoul256_light_background = 0
+  colo seoul256-light
+  call AssertLight(253)
+
+  " g:seoul256_background should still be 236
+  colo seoul256
+  call AssertDark(236)
 
 Execute (Cleanup):
   AssertEqual 'default', g:colors_name

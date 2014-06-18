@@ -79,9 +79,17 @@ colo seoul256
 If `g:seoul256_background` is set, seoul256 will choose the right version based
 on the value and `set background=dark/light` will not switch versions.
 
-However, seoul256-light will choose the light one regardless of the value.
-If the value doesn't fall within the allowed range of light background, the
-default 253 will be chosen as the background color.
+If you'd like to switch versions with custom background colors, set
+`g:seoul256_background` to be a dark value, and additionally define
+`g:seoul256_light_background` for seoul256-light.
+
+```vim
+let g:seoul256_background = 233
+let g:seoul256_light_background = 256
+
+colo seoul256
+colo seoul256-light
+```
 
 iTerm2 color scheme
 -------------------
