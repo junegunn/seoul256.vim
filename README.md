@@ -5,7 +5,7 @@
 " |_____|___|___|___|_|___|___|___|.vim "
 ```
 
-seoul256.vim
+seoul256.vim ![travis-ci](https://travis-ci.org/junegunn/seoul256.vim.svg?branch=master)
 ------------
 
 *seoul256.vim* is a low-contrast Vim color scheme based on [Seoul Colors](http://www.seoul.go.kr/v2012/seoul/symbol/color.html).
