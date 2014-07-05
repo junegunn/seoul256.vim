@@ -289,6 +289,9 @@ call s:hi('Question', [179, 88], ['', ''])
 " Search hit bottom
 call s:hi('WarningMsg', [179, 88], ['', ''])
 
+" Sign column
+call s:hi('SignColumn', [173, 173], [s:dark_bg, s:light_bg])
+
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""
@@ -305,17 +308,6 @@ let g:indentLine_color_gui  = s:rgb_map[[s:dark_bg + 1, s:light_bg - 2][s:style_
 let g:indent_guides_auto_colors = 0
 call s:hi('IndentGuidesOdd', ['', ''], [s:dark_bg - 1, s:light_bg + 1])
 call s:hi('IndentGuidesEven', ['', ''], [s:dark_bg + 1, s:light_bg - 1])
-
-" vim-scroll-position
-" -------------------
-call s:hi('SignColumn',                  [173, 173], [s:dark_bg, s:light_bg])
-call s:hi('ScrollPositionMarker',        [173, 173], [s:dark_bg + 1, s:light_bg - 2])
-call s:hi('ScrollPositionVisualBegin',   [168, 88],  [s:dark_bg + 1, s:light_bg - 2])
-call s:hi('ScrollPositionVisualMiddle',  [168, 88],  [s:dark_bg + 1, s:light_bg - 2])
-call s:hi('ScrollPositionVisualEnd',     [168, 88],  [s:dark_bg + 1, s:light_bg - 2])
-call s:hi('ScrollPositionVisualOverlap', [168, 88],  [s:dark_bg + 1, s:light_bg - 2])
-call s:hi('ScrollPositionChange',        [173, 173], [s:dark_bg + 1, s:light_bg - 2])
-call s:hi('ScrollPositionJump',          [173, 173], [s:dark_bg + 1, s:light_bg - 2])
 
 " vim-gitgutter
 " -------------
