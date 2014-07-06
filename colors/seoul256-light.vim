@@ -8,8 +8,8 @@
 " File:         seoul256-light.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.3.1
-" Last Updated: June 19, 2014
+" Version:      1.4.0
+" Last Updated: July 6, 2014
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
