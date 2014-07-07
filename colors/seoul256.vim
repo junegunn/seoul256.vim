@@ -8,8 +8,8 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.4.0
-" Last Updated: July 6, 2014
+" Version:      1.4.1
+" Last Updated: July 7, 2014
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -228,7 +228,7 @@ call s:hi('Directory', [187, 95], ['', ''])
 
 call s:hi('DiffAdd',    ['NONE', 'NONE'], [22, 151])
 call s:hi('DiffDelete', ['NONE', 'NONE'], [95, 181])
-call s:hi('DiffChange', ['NONE', 'NONE'], [24, 189])
+call s:hi('DiffChange', ['NONE', 'NONE'], [s:dark_bg + 3, 189])
 call s:hi('DiffText',   ['NONE', 'NONE'], [52, 224])
 
 call s:hi('VertSplit', [s:dark_bg_2, s:light_bg - 3], [s:dark_bg_2, s:light_bg - 3])
