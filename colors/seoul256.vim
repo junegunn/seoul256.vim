@@ -8,8 +8,8 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.4.1
-" Last Updated: July 7, 2014
+" Version:      1.4.2
+" Last Updated: July 30, 2014
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -267,10 +267,10 @@ call s:hi('Special', [216, 173], ['', ''])
 call s:hi('SpecialKey', [59, 145], ['', ''])
 
 " TODO: spell check
-call s:hi('SpellBad',   [252, 252], [95, 95])
-call s:hi('SpellCap',   [252, 252], [95, 95])
-call s:hi('SpellLocal', [252, 252], [95, 95])
-call s:hi('SpellRare',  [252, 252], [95, 95])
+call s:hi('SpellBad',   [252, 239], [95, 224])
+call s:hi('SpellCap',   [252, 239], [95, 224])
+call s:hi('SpellLocal', [252, 239], [95, 224])
+call s:hi('SpellRare',  [252, 239], [95, 224])
 
 "
 call s:hi('StatusLine', [95, 95], [187, 187])
