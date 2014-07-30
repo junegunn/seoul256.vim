@@ -8,8 +8,8 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.4.2
-" Last Updated: July 30, 2014
+" Version:      1.5.0
+" Last Updated: July 31, 2014
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -142,7 +142,8 @@ function! s:hi(item, fg, bg)
   endif
 endfunction
 
-if !has('gui_running')
+let s:gui = has('gui_running')
+if !s:gui
   set t_Co=256
 end
 
@@ -266,11 +267,32 @@ call s:hi('Special', [216, 173], ['', ''])
 " :map, listchars
 call s:hi('SpecialKey', [59, 145], ['', ''])
 
-" TODO: spell check
-call s:hi('SpellBad',   [252, 239], [95, 224])
-call s:hi('SpellCap',   [252, 239], [95, 224])
-call s:hi('SpellLocal', [252, 239], [95, 224])
-call s:hi('SpellRare',  [252, 239], [95, 224])
+if !s:gui
+  " Red / Blue / Cyan / Magenta
+  if s:style_idx == 0
+    hi SpellBad   ctermbg=NONE cterm=underline ctermfg=168
+    hi SpellCap   ctermbg=NONE cterm=underline ctermfg=110
+    hi SpellLocal ctermbg=NONE cterm=underline ctermfg=153
+    hi SpellRare  ctermbg=NONE cterm=underline ctermfg=218
+  else
+    hi SpellBad   ctermbg=NONE cterm=underline ctermfg=168
+    hi SpellCap   ctermbg=NONE cterm=underline ctermfg=25
+    hi SpellLocal ctermbg=NONE cterm=underline ctermfg=31
+    hi SpellRare  ctermbg=NONE cterm=underline ctermfg=96
+  endif
+else
+  if s:style_idx == 0
+    execute 'hi SpellBad   guisp=' . s:rgb_map[168]
+    execute 'hi SpellCap   guisp=' . s:rgb_map[110]
+    execute 'hi SpellLocal guisp=' . s:rgb_map[153]
+    execute 'hi SpellRare  guisp=' . s:rgb_map[218]
+  else
+    execute 'hi SpellBad   guisp=' . s:rgb_map[168]
+    execute 'hi SpellCap   guisp=' . s:rgb_map[25]
+    execute 'hi SpellLocal guisp=' . s:rgb_map[31]
+    execute 'hi SpellRare  guisp=' . s:rgb_map[96]
+  endif
+endif
 
 "
 call s:hi('StatusLine', [95, 95], [187, 187])
