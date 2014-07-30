@@ -8,7 +8,7 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.5.0
+" Version:      1.5.1
 " Last Updated: July 31, 2014
 " License:      MIT
 "
@@ -275,7 +275,7 @@ if !s:gui
     hi SpellLocal ctermbg=NONE cterm=underline ctermfg=153
     hi SpellRare  ctermbg=NONE cterm=underline ctermfg=218
   else
-    hi SpellBad   ctermbg=NONE cterm=underline ctermfg=168
+    hi SpellBad   ctermbg=NONE cterm=underline ctermfg=125
     hi SpellCap   ctermbg=NONE cterm=underline ctermfg=25
     hi SpellLocal ctermbg=NONE cterm=underline ctermfg=31
     hi SpellRare  ctermbg=NONE cterm=underline ctermfg=96
@@ -287,7 +287,7 @@ else
     execute 'hi SpellLocal gui=underline guisp=' . s:rgb_map[153]
     execute 'hi SpellRare  gui=underline guisp=' . s:rgb_map[218]
   else
-    execute 'hi SpellBad   gui=underline guisp=' . s:rgb_map[168]
+    execute 'hi SpellBad   gui=underline guisp=' . s:rgb_map[125]
     execute 'hi SpellCap   gui=underline guisp=' . s:rgb_map[25]
     execute 'hi SpellLocal gui=underline guisp=' . s:rgb_map[31]
     execute 'hi SpellRare  gui=underline guisp=' . s:rgb_map[96]
