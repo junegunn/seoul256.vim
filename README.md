@@ -22,20 +22,8 @@ Works on 256-color terminal or on GVim.
 Installation
 ------------
 
-[Use](https://github.com/tpope/vim-pathogen)
-[your](https://github.com/gmarik/vundle)
-[favorite](https://github.com/junegunn/vim-plug)
-[plugin](https://github.com/Shougo/neobundle.vim)
-[manager](https://github.com/MarcWeber/vim-addon-manager).
+Use your favorite plugin manager.
 
-- [Pathogen](https://github.com/tpope/vim-pathogen)
-  - `git clone https://github.com/junegunn/seoul256.vim.git ~/.vim/bundle/seoul256.vim`
-- [Vundle](https://github.com/gmarik/vundle)
-  1. Add `Bundle 'junegunn/seoul256.vim'` to .vimrc
-  2. Run `:BundleInstall`
-- [NeoBundle](https://github.com/Shougo/neobundle.vim)
-  1. Add `NeoBundle 'junegunn/seoul256.vim'` to .vimrc
-  2. Run `:NeoBundleInstall`
 - [vim-plug](https://github.com/junegunn/vim-plug)
   1. Add `Plug 'junegunn/seoul256.vim'` to .vimrc
   2. Run `:PlugInstall`
@@ -88,6 +76,15 @@ let g:seoul256_light_background = 256
 colo seoul256
 colo seoul256-light
 ```
+
+Current background color
+------------------------
+
+When loaded, soul256.vim will set up two global variables so that you can use
+them to customize other plugins:
+
+- `g:seoul256_fg` - Current foreground color in ANSI code
+- `g:seoul256_bg` - Current background color in ANSI code
 
 iTerm2 color scheme
 -------------------

@@ -8,8 +8,8 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.5.1
-" Last Updated: July 31, 2014
+" Version:      1.5.2
+" Last Updated: Aug 4, 2014
 " License:      MIT
 "
 " Copyright (c) 2013 Junegunn Choi
@@ -115,6 +115,7 @@ if !exists('s:style')
     let s:style = &background
   endif
 endif
+let s:style_idx = s:style == 'light'
 
 " Background colors
 if s:style == 'dark'
@@ -128,7 +129,9 @@ let s:dark_bg_2 = s:dark_bg > 233 ? s:dark_bg - 2 : 16
 let s:light_bg_1 = min([s:light_bg + 1, 256])
 let s:light_bg_2 = min([s:light_bg + 2, 256])
 
-let s:style_idx = s:style == 'light'
+" Foreground colors
+let s:dark_fg = 252
+let s:light_fg = 239
 
 function! s:hi(item, fg, bg)
   let fg = a:fg[s:style_idx] > 255 ? 231 : a:fg[s:style_idx]
@@ -152,7 +155,8 @@ hi clear
 if exists("syntax_on")
   syntax reset
 endif
-call s:hi('Normal', [252, 239], [s:dark_bg, s:light_bg])
+
+call s:hi('Normal', [s:dark_fg, s:light_fg], [s:dark_bg, s:light_bg])
 
 call s:hi('LineNr', [101, 101], [s:dark_bg + 1, s:light_bg - 2])
 call s:hi('Visual', ['', ''], [23, 152])
@@ -208,8 +212,8 @@ call s:hi('Exception', [161, 161], ['', ''])
 call s:hi('Structure', [116, 23], ['', ''])
 " hi Typedef ctermfg=
 
-call s:hi('Error', [252, s:light_bg_1], [52, 174])
-call s:hi('ErrorMsg', [252, s:light_bg_1], [52, 168])
+call s:hi('Error', [s:dark_fg, s:light_bg_1], [52, 174])
+call s:hi('ErrorMsg', [s:dark_fg, s:light_bg_1], [52, 168])
 call s:hi('Underlined', [181, 168], ['', ''])
 
 " set textwidth=80
@@ -250,11 +254,11 @@ call s:hi('MoreMsg', [173, 173], ['', ''])
 
 " Popup menu
 call s:hi('Pmenu', [s:dark_bg + 1, 238], [224, 224])
-call s:hi('PmenuSel', [252, 252], [89, 89])
+call s:hi('PmenuSel', [s:dark_fg, s:dark_fg], [89, 89])
 call s:hi('PmenuSbar', ['', ''], [65, 65])
 call s:hi('PmenuThumb', ['', ''], [23, 23])
 
-call s:hi('Search', [252, 255], [24, 74])
+call s:hi('Search', [s:dark_fg, 255], [24, 74])
 call s:hi('IncSearch', [220, 220], [s:dark_bg + 1, 238])
 
 " String delimiter, interpolation
@@ -319,16 +323,12 @@ call s:hi('diffAdded',   [108, 65], ['', ''])
 call s:hi('diffRemoved', [174, 131], ['', ''])
 hi link diffLine Constant
 
+call s:hi('Conceal', [s:dark_fg - 5, s:light_fg + 5], [s:dark_bg, s:light_bg])
+call s:hi('Ignore',  [s:dark_fg - 5, s:light_fg + 5], [s:dark_bg, s:light_bg])
+
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """""""""""""""""""""""""""""""""""""""""""""""""
-
-" indentLine
-" ----------
-call s:hi('Conceal', [s:dark_bg + 1, s:light_bg - 2], [s:dark_bg, s:light_bg])
-call s:hi('Ignore', [s:dark_bg + 1, s:light_bg - 2], [s:dark_bg, s:light_bg])
-let g:indentLine_color_term = [s:dark_bg + 1, s:light_bg - 2][s:style_idx]
-let g:indentLine_color_gui  = s:rgb_map[[s:dark_bg + 1, s:light_bg - 2][s:style_idx]]
 
 " vim-indent-guides
 " -----------------
@@ -366,6 +366,8 @@ call s:hi('rubyPredefinedIdentifier', [230, 52], ['', ''])
 hi CursorLine cterm=NONE
 hi CursorLineNr cterm=NONE
 
+let g:seoul256_fg = [s:dark_fg, s:light_fg][s:style_idx]
+let g:seoul256_bg = [s:dark_bg, s:light_bg][s:style_idx]
 let g:colors_name = 'seoul256'
 if s:colors_name != g:colors_name || s:background == s:style
   let &background = s:style

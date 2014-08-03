@@ -16,6 +16,8 @@ Execute (Initialize):
 
   function! AssertDark(...)
     let bg = a:0 > 0 ? a:1 : 237
+    AssertEqual 252, g:seoul256_fg
+    AssertEqual bg,  g:seoul256_bg
     Assert HI('Normal')     =~ 'ctermfg=252 ctermbg='.bg, 'Normal'
     Assert HI('CursorLine') =~ 'ctermbg='.(bg - 1),       'CursorLine'
     Assert HI('TabLine')    =~ 'ctermfg='.(bg + 12),      'TabLine'
@@ -30,6 +32,8 @@ Execute (Initialize):
   function! AssertLight(...)
     let bg = a:0 > 0 ? a:1 : 253
     let b  = bg == 256 ? 231 : bg
+    AssertEqual 239, g:seoul256_fg
+    AssertEqual bg,  g:seoul256_bg
     Assert HI('Normal')     =~ 'ctermfg=239 ctermbg='.b,  'Normal'
     Assert HI('CursorLine') =~ 'ctermbg='.(bg - 1),       'CursorLine'
     Assert HI('TabLine')    =~ 'ctermfg='.(bg - 12),      'TabLine'
