@@ -83,8 +83,8 @@ Current background color
 When loaded, soul256.vim will set up two global variables so that you can use
 them to customize other plugins:
 
-- `g:seoul256_fg` - Current foreground color in ANSI code
-- `g:seoul256_bg` - Current background color in ANSI code
+- `g:seoul256_current_fg` - Current foreground color in ANSI code
+- `g:seoul256_current_bg` - Current background color in ANSI code
 
 iTerm2 color scheme
 -------------------
