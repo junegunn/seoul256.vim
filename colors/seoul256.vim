@@ -8,7 +8,7 @@
 " File:         seoul256.vim
 " URL:          github.com/junegunn/seoul256.vim
 " Author:       Junegunn Choi (junegunn.c@gmail.com)
-" Version:      1.5.2
+" Version:      1.5.3
 " Last Updated: Aug 4, 2014
 " License:      MIT
 "
@@ -323,8 +323,8 @@ call s:hi('diffAdded',   [108, 65], ['', ''])
 call s:hi('diffRemoved', [174, 131], ['', ''])
 hi link diffLine Constant
 
-call s:hi('Conceal', [s:dark_fg - 5, s:light_fg + 5], [s:dark_bg, s:light_bg])
-call s:hi('Ignore',  [s:dark_fg - 5, s:light_fg + 5], [s:dark_bg, s:light_bg])
+call s:hi('Conceal', [s:dark_fg + 2, s:light_fg - 2], [s:dark_bg - 1, s:light_bg + 2])
+call s:hi('Ignore',  [s:dark_bg + 3, s:light_bg - 3], [s:dark_bg, s:light_bg])
 
 """""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
