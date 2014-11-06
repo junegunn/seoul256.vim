@@ -89,7 +89,8 @@ them to customize other plugins:
 iTerm2 color scheme
 -------------------
 
-Check out [seoul256-iTerm2](https://github.com/mikker/seoul256-iTerm2) by
+- [Official iTerm2 color scheme](iterm2/seoul256.itermcolors)
+- [seoul256-iTerm2](https://github.com/mikker/seoul256-iTerm2) by
 [Mikkel Malmberg](https://github.com/mikker).
 
 Author
