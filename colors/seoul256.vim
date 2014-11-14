@@ -286,15 +286,15 @@ if !s:gui
   endif
 else
   if s:style_idx == 0
-    execute 'hi SpellBad   gui=underline guisp=' . s:rgb_map[168]
-    execute 'hi SpellCap   gui=underline guisp=' . s:rgb_map[110]
-    execute 'hi SpellLocal gui=underline guisp=' . s:rgb_map[153]
-    execute 'hi SpellRare  gui=underline guisp=' . s:rgb_map[218]
+    execute 'hi SpellBad   gui=undercurl guisp=' . s:rgb_map[168]
+    execute 'hi SpellCap   gui=undercurl guisp=' . s:rgb_map[110]
+    execute 'hi SpellLocal gui=undercurl guisp=' . s:rgb_map[153]
+    execute 'hi SpellRare  gui=undercurl guisp=' . s:rgb_map[218]
   else
-    execute 'hi SpellBad   gui=underline guisp=' . s:rgb_map[125]
-    execute 'hi SpellCap   gui=underline guisp=' . s:rgb_map[25]
-    execute 'hi SpellLocal gui=underline guisp=' . s:rgb_map[31]
-    execute 'hi SpellRare  gui=underline guisp=' . s:rgb_map[96]
+    execute 'hi SpellBad   gui=undercurl guisp=' . s:rgb_map[125]
+    execute 'hi SpellCap   gui=undercurl guisp=' . s:rgb_map[25]
+    execute 'hi SpellLocal gui=undercurl guisp=' . s:rgb_map[31]
+    execute 'hi SpellRare  gui=undercurl guisp=' . s:rgb_map[96]
   endif
 endif
 
