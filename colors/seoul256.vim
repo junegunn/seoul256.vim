@@ -303,10 +303,10 @@ call s:hi('IndentGuidesEven', ['', ''], [s:dark_bg + 1, s:light_bg - 1])
 
 " vim-gitgutter
 " -------------
-call s:hi('GitGutterAdd', [108, 65], ['', ''])
-call s:hi('GitGutterChange', [68, 68], ['', ''])
-call s:hi('GitGutterDelete', [161, 161], ['', ''])
-call s:hi('GitGutterChangeDelete', [168, 168], ['', ''])
+call s:hi('GitGutterAdd', [108, 65], [s:dark_bg + 1, s:light_bg - 2])
+call s:hi('GitGutterChange', [68, 68], [s:dark_bg + 1, s:light_bg - 2])
+call s:hi('GitGutterDelete', [161, 161], [s:dark_bg + 1, s:light_bg -2 ])
+call s:hi('GitGutterChangeDelete', [168, 168], [s:dark_bg + 1, s:light_bg - 2])
 
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces     
 " ---------------------------------------------------^^^^^
