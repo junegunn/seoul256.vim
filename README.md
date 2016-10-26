@@ -93,6 +93,11 @@ iTerm2 color scheme
 - [seoul256-iTerm2](https://github.com/mikker/seoul256-iTerm2) by
 [Mikkel Malmberg](https://github.com/mikker).
 
+Emacs color theme
+-------------------
+
+- [seoul256-emacs](https://github.com/anandpiyer/seoul256-emacs)
+
 Author
 ------
 
