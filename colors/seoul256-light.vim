@@ -64,7 +64,7 @@ if !empty(s:master)
       set background=light
     endif
     let g:colors_name = 'seoul256'
-    execute 'silent source '.s:master
+    execute 'silent source' . fnameescape(s:master)
     let g:colors_name = &background == 'dark' ? 'seoul256' : 'seoul256-light'
   finally
     " Revert g:seoul256_background
