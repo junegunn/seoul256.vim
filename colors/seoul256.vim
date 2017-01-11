@@ -137,6 +137,7 @@ if !exists('s:rgb_map')
             \ 250: '#C8C8C8', 251: '#D1D0D1', 252: '#D9D9D9', 253: '#E1E1E1', 254: '#E9E9E9',
             \ 255: '#F1F1F1' }
         endif
+    endif
 endif
 
 let s:background  = &background
@@ -393,7 +394,7 @@ call s:hi('GitGutterChange', [68, 68], [s:dark_bg + 1, s:light_bg - 2])
 call s:hi('GitGutterDelete', [161, 161], [s:dark_bg + 1, s:light_bg -2 ])
 call s:hi('GitGutterChangeDelete', [168, 168], [s:dark_bg + 1, s:light_bg - 2])
 
-" http://vim.wikia.com/wiki/Highlight_unwanted_spaces     
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 " ---------------------------------------------------^^^^^
 call s:hi('ExtraWhitespace', ['', ''], [s:dark_bg - 1, s:light_bg - 2])
 
