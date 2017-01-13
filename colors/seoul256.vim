@@ -392,7 +392,7 @@ call s:hi('GitGutterChange', [68, 68], [s:dark_bg + 1, s:light_bg - 2])
 call s:hi('GitGutterDelete', [161, 161], [s:dark_bg + 1, s:light_bg -2 ])
 call s:hi('GitGutterChangeDelete', [168, 168], [s:dark_bg + 1, s:light_bg - 2])
 
-" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces     
 " ---------------------------------------------------^^^^^
 call s:hi('ExtraWhitespace', ['', ''], [s:dark_bg - 1, s:light_bg - 2])
 
