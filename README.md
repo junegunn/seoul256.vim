@@ -77,6 +77,26 @@ colo seoul256
 colo seoul256-light
 ```
 
+Alternate 256-xterm -> sRGB mapping
+-------------------------------------
+
+The GUI RGB colors are derived from 256-color-terminal color codes in the
+source code, with the help of a lookup table.
+
+By default, the table contains RGB values of terminal colors as displayed by
+iTerm2 on macOS. If you're using another terminal emulator (urxvt,
+xfce4-terminal,... pretty much any terminal on Linux), the colors aren't
+displayed in the same way. That's why you may see a difference in color of GUI
+and terminal [n]vim in Linux.
+
+If `let g:seoul256_srgb` is set to 1, the color mapping is altered
+to suit the way urxvt (and various other terminals) renders them. That way, the
+colors of the terminal and GUI versions are uniformly colored on Linux.
+
+```vim
+let g:seoul256_srgb = 1
+```
+
 Current background color
 ------------------------
 
