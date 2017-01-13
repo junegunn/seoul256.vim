@@ -36,7 +36,7 @@
 " WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 if !exists('s:rgb_map')
-    if exists('g:seoul256_srgb') && g:seoul256_srgb
+    if get(g:, 'seoul256_srgb', 0)
         let s:rgb_map =
         \{ 16: '#000000',  17: '#00005f',  18: '#000087',
         \  19: '#0000af',  20: '#0000d7',  21: '#0000ff',
@@ -392,7 +392,7 @@ call s:hi('GitGutterChange', [68, 68], [s:dark_bg + 1, s:light_bg - 2])
 call s:hi('GitGutterDelete', [161, 161], [s:dark_bg + 1, s:light_bg -2 ])
 call s:hi('GitGutterChangeDelete', [168, 168], [s:dark_bg + 1, s:light_bg - 2])
 
-" http://vim.wikia.com/wiki/Highlight_unwanted_spaces     
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 " ---------------------------------------------------^^^^^
 call s:hi('ExtraWhitespace', ['', ''], [s:dark_bg - 1, s:light_bg - 2])
 
