@@ -36,7 +36,7 @@
 " WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 if !exists('s:rgb_map')
-    if exists('g:seoul256_true_srgb_mapping') && g:seoul256_true_srgb_mapping
+    if exists('g:seoul256_srgb') && g:seoul256_srgb
         let s:rgb_map =
         \{ 16: '#000000',  17: '#00005f',  18: '#000087',
         \  19: '#0000af',  20: '#0000d7',  21: '#0000ff',

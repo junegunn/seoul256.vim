@@ -89,12 +89,12 @@ xfce4-terminal,... pretty much any terminal on Linux), the colors aren't
 displayed in the same way. That's why you may see a difference in color of GUI
 and terminal [n]vim in Linux.
 
-If `let g:seoul256_true_srgb_mapping` is set to 1, the color mapping is altered
+If `let g:seoul256_srgb` is set to 1, the color mapping is altered
 to suit the way urxvt (and various other terminals) renders them. That way, the
 colors of the terminal and GUI versions are uniformly colored on Linux.
 
 ```vim
-let g:seoul256_true_srgb_mapping = 1
+let g:seoul256_srgb = 1
 ```
 
 Current background color
