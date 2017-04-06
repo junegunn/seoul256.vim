@@ -394,9 +394,8 @@ call s:hi('GitGutterChangeDelete', [168, 168], [s:dark_bg + 1, s:light_bg - 2])
 
 " ale
 " ---
-call s:hi('ALEErrorSign', [161, 161], [s:dark_bg + 1, s:light_bg - 2])
-call s:hi('ALEWarningSign', [174, 131], [s:dark_bg + 1, s:light_bg - 2])
-
+call s:hi('ALEErrorSign', [161, 161], [s:dark_bg, s:light_bg])
+call s:hi('ALEWarningSign', [174, 131], [s:dark_bg, s:light_bg])
 
 " vim-signify
 " -----------
