@@ -422,6 +422,7 @@ call s:hi('rubyCurlyBlockDelimiter', [144, 101], ['', ''])
 call s:hi('rubyPredefinedIdentifier', [230, 52], ['', ''])
 " hi rubyRegexpSpecial
 
+hi Cursor cterm=inverse gui=inverse
 hi CursorLine cterm=NONE
 hi CursorLineNr cterm=NONE
 
