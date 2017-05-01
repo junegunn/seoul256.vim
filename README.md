@@ -33,10 +33,10 @@ Color schemes
 
 ```vim
 " Unified color scheme (default: dark)
-colo seoul256
+color seoul256
 
 " Light color scheme
-colo seoul256-light
+color seoul256-light
 
 " Switch
 set background=dark
@@ -53,13 +53,13 @@ Change background color
 "   Range:   233 (darkest) ~ 239 (lightest)
 "   Default: 237
 let g:seoul256_background = 236
-colo seoul256
+color seoul256
 
 " seoul256 (light):
 "   Range:   252 (darkest) ~ 256 (lightest)
 "   Default: 253
 let g:seoul256_background = 256
-colo seoul256
+color seoul256
 ```
 
 If `g:seoul256_background` is set, seoul256 will choose the right version based
@@ -73,8 +73,8 @@ If you'd like to switch versions with custom background colors, set
 let g:seoul256_background = 233
 let g:seoul256_light_background = 256
 
-colo seoul256
-colo seoul256-light
+color seoul256
+color seoul256-light
 ```
 
 Alternate 256-xterm -> sRGB mapping
