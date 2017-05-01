@@ -33,7 +33,8 @@
 " OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 " WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-let s:master    = get(split(globpath(&rtp, 'colors/seoul256.vim'), '\n'), 0, '')
+let s:colors_dir= fnamemodify(resolve(expand('<sfile>:p')), ':h')
+let s:master    = get(globpath(s:colors_dir, 'seoul256.vim', 1, 1), 0, '')
 let s:custom_bg = get(g:, 'seoul256_light_background', get(g:, 'seoul256_background', 253))
 let s:light     = s:custom_bg >= 252 && s:custom_bg <= 256
 let s:var_found = exists('g:seoul256_background')
