@@ -369,6 +369,13 @@ call s:hi('WarningMsg', [179, 88], ['', ''])
 " Sign column
 call s:hi('SignColumn', [173, 173], [s:dark_bg, s:light_bg])
 
+" Italic comments
+hi Comment gui=italic cterm=italic
+
+" Rich markdown highlighting
+hi markdownItalic gui=italic cterm=italic
+hi markdownBold gui=bold cterm=bold
+
 " Diff
 call s:hi('diffAdded',   [108, 65], ['', ''])
 call s:hi('diffRemoved', [174, 131], ['', ''])
