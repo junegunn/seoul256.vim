@@ -219,8 +219,7 @@ call s:hi('Character', [174, 168], ['', ''])
 call s:hi('Delimiter', [137, 94], ['', ''])
 call s:hi('StringDelimiter', [137, 94], ['', ''])
 call s:hi('Statement', [108, 66], ['', ''])
-" case, default, etc.
-" hi Label ctermfg=
+hi link vimIsCommand Statement
 
 " if else end
 call s:hi('Conditional', [110, 31], ['', ''])
