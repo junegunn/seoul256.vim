@@ -245,6 +245,7 @@ call s:hi('Identifier', [217, 96], ['', ''])
 
 " AAA Abc
 call s:hi('Type', [179, 94], ['', ''])
+hi link vimAutoCmdSfxList Type
 
 " + - * / <<
 call s:hi('Operator', [186, 131], ['', ''])
