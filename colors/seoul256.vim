@@ -219,8 +219,7 @@ call s:hi('Character', [174, 168], ['', ''])
 call s:hi('Delimiter', [137, 94], ['', ''])
 call s:hi('StringDelimiter', [137, 94], ['', ''])
 call s:hi('Statement', [108, 66], ['', ''])
-" case, default, etc.
-" hi Label ctermfg=
+hi link vimIsCommand Statement
 
 " if else end
 call s:hi('Conditional', [110, 31], ['', ''])
@@ -229,13 +228,14 @@ call s:hi('Conditional', [110, 31], ['', ''])
 call s:hi('Repeat', [68, 67], ['', ''])
 call s:hi('Todo', [161, 125], [s:dark_bg_2, s:light_bg_2])
 call s:hi('Function', [187, 58], ['', ''])
+hi link vimFunction Function
+hi link vimUserFunc Function
 
 " Macros
 call s:hi('Define', [173, 131], ['', ''])
 call s:hi('Macro', [173, 131], ['', ''])
 call s:hi('Include', [173, 131], ['', ''])
 call s:hi('PreCondit', [173, 131], ['', ''])
-
 
 " #!
 call s:hi('PreProc', [143, 58], ['', ''])
@@ -245,6 +245,7 @@ call s:hi('Identifier', [217, 96], ['', ''])
 
 " AAA Abc
 call s:hi('Type', [179, 94], ['', ''])
+hi link vimAutoCmdSfxList Type
 
 " + - * / <<
 call s:hi('Operator', [186, 131], ['', ''])
@@ -404,7 +405,6 @@ call s:hi('ALEWarningSign', [174, 131], [s:dark_bg, s:light_bg])
 call s:hi('SignifySignAdd', [108, 65], [s:dark_bg + 1, s:light_bg - 2])
 call s:hi('SignifySignChange', [68, 68], [s:dark_bg + 1, s:light_bg - 2])
 call s:hi('SignifySignDelete', [161, 161], [s:dark_bg + 1, s:light_bg - 2])
-
 
 " http://vim.wikia.com/wiki/Highlight_unwanted_spaces     
 " ---------------------------------------------------^^^^^
