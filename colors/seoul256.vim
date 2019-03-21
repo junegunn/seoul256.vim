@@ -405,8 +405,16 @@ call s:hi('SignifySignAdd', [108, 65], [s:dark_bg + 1, s:light_bg - 2])
 call s:hi('SignifySignChange', [68, 68], [s:dark_bg + 1, s:light_bg - 2])
 call s:hi('SignifySignDelete', [161, 161], [s:dark_bg + 1, s:light_bg - 2])
 
+" buftabline
+" -----------
+call s:hi('BufTabLineCurrent', [95, 95], [187, 187])
+hi BufTabLineCurrent cterm=bold,reverse gui=bold,reverse
+call s:hi('BufTabLineActive', [s:dark_bg + 2, s:light_bg - 2], [187, 238])
+hi BufTabLineActive cterm=reverse gui=reverse
+call s:hi('BufTabLineHidden', [s:dark_bg + 12, s:light_bg - 12], ['', ''])
+call s:hi('BufTabLineFill', ['', ''], [s:dark_bg, s:light_bg])
 
-" http://vim.wikia.com/wiki/Highlight_unwanted_spaces     
+" http://vim.wikia.com/wiki/Highlight_unwanted_spaces
 " ---------------------------------------------------^^^^^
 call s:hi('ExtraWhitespace', ['', ''], [s:dark_bg - 1, s:light_bg - 2])
 
