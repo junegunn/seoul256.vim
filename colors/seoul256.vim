@@ -367,7 +367,7 @@ call s:hi('Question', [179, 88], ['', ''])
 call s:hi('WarningMsg', [179, 88], ['', ''])
 
 " Sign column
-call s:hi('SignColumn', [173, 173], [s:dark_bg, s:light_bg])
+call s:hi('SignColumn', [101, 101], [s:dark_bg + 1, s:light_bg - 2])
 
 " Diff
 call s:hi('diffAdded',   [108, 65], ['', ''])
