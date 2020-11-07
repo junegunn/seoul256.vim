@@ -118,6 +118,11 @@ Emacs color theme
 
 - [seoul256-emacs](https://github.com/anandpiyer/seoul256-emacs)
 
+Gnome terminal color theme
+-----------------
+
+- [gnome terminal profile](https://github.com/jslim89/seoul256.vim/tree/master/gnome-terminal)
+
 Author
 ------
 
