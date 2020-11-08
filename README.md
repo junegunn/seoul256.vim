@@ -123,6 +123,11 @@ Gnome terminal color theme
 
 - [gnome terminal profile](https://github.com/jslim89/seoul256.vim/tree/master/gnome-terminal)
 
+JetBrains
+-----------------
+
+- [JetBrains IDE](https://github.com/jslim89/seoul256.vim/tree/master/jetbrains)
+
 Author
 ------
 
