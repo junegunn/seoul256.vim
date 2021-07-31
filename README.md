@@ -28,7 +28,7 @@ Use your favorite plugin manager.
   1. Add `Plug 'junegunn/seoul256.vim'` to .vimrc
   2. Run `:PlugInstall`
 - Vim 8+ packages
-  1. Run these commands in your terminal
+  Run these commands in your terminal
   ```
   mkdir -p ~/.vim/pack/plugins/start
   git clone https://github.com/aorazalin/seoul256.vim.git ~/.vim/pack/plugins/start
