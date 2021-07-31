@@ -29,7 +29,7 @@ Use your favorite plugin manager.
   2. Run `:PlugInstall`
 - Vim 8+ packages
   Run these commands in your terminal
-  ```bash
+  ```shell
   mkdir -p ~/.vim/pack/plugins/start
   git clone https://github.com/aorazalin/seoul256.vim.git ~/.vim/pack/plugins/start
   ```
