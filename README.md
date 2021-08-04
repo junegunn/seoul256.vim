@@ -28,6 +28,11 @@ Use your favorite plugin manager.
   1. Add `Plug 'junegunn/seoul256.vim'` to .vimrc
   2. Run `:PlugInstall`
 
+- [packer.nvim](https://github.com/wbthomason/packer.nvim)
+  1. Add `use 'junegunn/seoul256.vim'` to ~/.config/nvim/init.lua
+  2. Run `:PackerInstall`
+
+
 Color schemes
 -------------
 
