@@ -48,6 +48,15 @@ set background=dark
 set background=light
 ```
 
+```lua
+-- Light color scheme
+vim.cmd[[colorscheme seoul256]]
+
+-- Switch
+vim.g.background = dark
+vim.g.background = light
+```
+
 Change background color
 -----------------------
 
@@ -67,6 +76,20 @@ let g:seoul256_background = 256
 colo seoul256
 ```
 
+```lua
+-- seoul256 (dark):
+--   Range:   233 (darkest) ~ 239 (lightest)
+--   Default: 237
+vim.g.seoul256_background = 236
+vim.cmd[[colorscheme seoul256]]
+
+-- seoul256 (light):
+--   Range:   252 (darkest) ~ 256 (lightest)
+--   Default: 253
+vim.g.seoul256_background = 256
+vim.cmd[[colorscheme seoul256]]
+```
+
 If `g:seoul256_background` is set, seoul256 will choose the right version based
 on the value and `set background=dark/light` will not switch versions.
 
@@ -80,6 +103,13 @@ let g:seoul256_light_background = 256
 
 colo seoul256
 colo seoul256-light
+```
+
+```lua
+vim.g.seoul256_background = 233
+vim.g.seoul256_light_background = 256
+vim.cmd[[colorscheme seoul256]]
+vim.cmd[[colorscheme seoul256-light]]
 ```
 
 Alternate 256-xterm -> sRGB mapping
@@ -100,6 +130,10 @@ colors of the terminal and GUI versions are uniformly colored on Linux.
 
 ```vim
 let g:seoul256_srgb = 1
+```
+
+```lua
+vim.g.seoul256_srgb = 1
 ```
 
 Current background color
