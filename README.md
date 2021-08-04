@@ -36,6 +36,7 @@ Use your favorite plugin manager.
 Color schemes
 -------------
 
+#### VimL
 ```vim
 " Unified color scheme (default: dark)
 colo seoul256
@@ -48,9 +49,13 @@ set background=dark
 set background=light
 ```
 
+#### Lua
 ```lua
--- Light color scheme
+-- Unified color scheme (default: dark)
 vim.cmd[[colorscheme seoul256]]
+
+-- Light color scheme
+vim.cmd[[colorscheme seoul256-light]]
 
 -- Switch
 vim.g.background = dark
@@ -62,6 +67,8 @@ Change background color
 
 ![seoul256-bg](https://raw.github.com/junegunn/i/master/seoul256-bg.png)
 
+
+#### VimL
 ```vim
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
@@ -76,6 +83,8 @@ let g:seoul256_background = 256
 colo seoul256
 ```
 
+
+#### Lua
 ```lua
 -- seoul256 (dark):
 --   Range:   233 (darkest) ~ 239 (lightest)
@@ -97,6 +106,7 @@ If you'd like to switch versions with custom background colors, set
 `g:seoul256_background` to be a dark value, and additionally define
 `g:seoul256_light_background` for seoul256-light.
 
+#### VimL
 ```vim
 let g:seoul256_background = 233
 let g:seoul256_light_background = 256
@@ -105,6 +115,7 @@ colo seoul256
 colo seoul256-light
 ```
 
+#### Lua
 ```lua
 vim.g.seoul256_background = 233
 vim.g.seoul256_light_background = 256
@@ -128,10 +139,12 @@ If `let g:seoul256_srgb` is set to 1, the color mapping is altered
 to suit the way urxvt (and various other terminals) renders them. That way, the
 colors of the terminal and GUI versions are uniformly colored on Linux.
 
+#### VimL
 ```vim
 let g:seoul256_srgb = 1
 ```
 
+#### Lua
 ```lua
 vim.g.seoul256_srgb = 1
 ```
