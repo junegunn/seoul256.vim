@@ -100,7 +100,7 @@ let g:seoul256_srgb = 1
 Current background color
 ------------------------
 
-When loaded, soul256.vim will set up two global variables so that you can use
+When loaded, seoul256.vim will set up two global variables so that you can use
 them to customize other plugins:
 
 - `g:seoul256_current_fg` - Current foreground color in ANSI code
