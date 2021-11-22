@@ -8,7 +8,7 @@
 seoul256.vim ![travis-ci](https://travis-ci.org/junegunn/seoul256.vim.svg?branch=master)
 ------------
 
-*seoul256.vim* is a low-contrast Vim color scheme based on [Seoul Colors](http://www.seoul.go.kr/v2012/seoul/symbol/color.html).
+*seoul256.vim* is a low-contrast Vim color scheme based on [Seoul Colors](https://www.seoul.go.kr/seoul/color.do).
 Works on 256-color terminal or on GVim.
 
 ### seoul256
