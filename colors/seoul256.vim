@@ -301,8 +301,8 @@ call s:hi('NonText', [59, 145], ['', ''])
 call s:hi('MoreMsg', [173, 173], ['', ''])
 
 " Popup menu
-call s:hi('Pmenu', [s:dark_bg + 1, 238], [224, 224])
-call s:hi('PmenuSel', [s:dark_fg, s:dark_fg], [89, 89])
+call s:hi('Pmenu', ['', ''], [s:dark_bg + 1, s:light_bg - 2])
+call s:hi('PmenuSel', [s:dark_fg, s:dark_fg], [95, 95])
 call s:hi('PmenuSbar', ['', ''], [65, 65])
 call s:hi('PmenuThumb', ['', ''], [23, 23])
 
