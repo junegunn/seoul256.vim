@@ -123,8 +123,8 @@ kitty color theme
 
 - [seoul256-kitty](https://github.com/guilhermedeandrade/seoul256-kitty)
 
-ghostty color theme
------------------
+Ghostty color theme
+-------------------
 
 - [seoul256-ghostty](https://github.com/jcmorrow/seoul256-ghostty)
 
