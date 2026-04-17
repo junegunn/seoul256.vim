@@ -227,7 +227,7 @@ call s:hi('Conditional', [110, 31], ['', ''])
 
 " while end
 call s:hi('Repeat', [68, 67], ['', ''])
-call s:hi('Todo', [161, 125], [s:dark_bg_2, s:light_bg_2])
+call s:hi('Todo', [161, 125], [max([s:dark_bg - 2, 233]), s:light_bg_2])
 call s:hi('Function', [187, 58], ['', ''])
 
 " Macros
