@@ -28,9 +28,15 @@ Use your favorite plugin manager.
   1. Add `Plug 'junegunn/seoul256.vim'` to .vimrc
   2. Run `:PlugInstall`
 
+- [packer.nvim](https://github.com/wbthomason/packer.nvim)
+  1. Add `use 'junegunn/seoul256.vim'` to ~/.config/nvim/init.lua
+  2. Run `:PackerInstall`
+
+
 Color schemes
 -------------
 
+#### VimL
 ```vim
 " Unified color scheme (default: dark)
 colo seoul256
@@ -43,11 +49,26 @@ set background=dark
 set background=light
 ```
 
+#### Lua
+```lua
+-- Unified color scheme (default: dark)
+vim.cmd[[colorscheme seoul256]]
+
+-- Light color scheme
+vim.cmd[[colorscheme seoul256-light]]
+
+-- Switch
+vim.g.background = dark
+vim.g.background = light
+```
+
 Change background color
 -----------------------
 
 ![seoul256-bg](https://raw.github.com/junegunn/i/master/seoul256-bg.png)
 
+
+#### VimL
 ```vim
 " seoul256 (dark):
 "   Range:   233 (darkest) ~ 239 (lightest)
@@ -62,6 +83,22 @@ let g:seoul256_background = 256
 colo seoul256
 ```
 
+
+#### Lua
+```lua
+-- seoul256 (dark):
+--   Range:   233 (darkest) ~ 239 (lightest)
+--   Default: 237
+vim.g.seoul256_background = 236
+vim.cmd[[colorscheme seoul256]]
+
+-- seoul256 (light):
+--   Range:   252 (darkest) ~ 256 (lightest)
+--   Default: 253
+vim.g.seoul256_background = 256
+vim.cmd[[colorscheme seoul256]]
+```
+
 If `g:seoul256_background` is set, seoul256 will choose the right version based
 on the value and `set background=dark/light` will not switch versions.
 
@@ -69,12 +106,21 @@ If you'd like to switch versions with custom background colors, set
 `g:seoul256_background` to be a dark value, and additionally define
 `g:seoul256_light_background` for seoul256-light.
 
+#### VimL
 ```vim
 let g:seoul256_background = 233
 let g:seoul256_light_background = 256
 
 colo seoul256
 colo seoul256-light
+```
+
+#### Lua
+```lua
+vim.g.seoul256_background = 233
+vim.g.seoul256_light_background = 256
+vim.cmd[[colorscheme seoul256]]
+vim.cmd[[colorscheme seoul256-light]]
 ```
 
 Alternate 256-xterm -> sRGB mapping
@@ -93,8 +139,14 @@ If `let g:seoul256_srgb` is set to 1, the color mapping is altered
 to suit the way urxvt (and various other terminals) renders them. That way, the
 colors of the terminal and GUI versions are uniformly colored on Linux.
 
+#### VimL
 ```vim
 let g:seoul256_srgb = 1
+```
+
+#### Lua
+```lua
+vim.g.seoul256_srgb = 1
 ```
 
 Current background color
