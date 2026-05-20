@@ -133,6 +133,11 @@ Zed color theme
 
 - [seoul256-zed](https://github.com/jcmorrow/seoul256-zed)
 
+Zellij color theme
+------------------
+
+- [seoul256-zellij](https://github.com/seungjin/seoul256-zellij)
+
 Author
 ------
 
