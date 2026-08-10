@@ -1,0 +1,9 @@
+[/]
+background-color='rgb(38,38,38)'
+bold-color='rgb(228,228,228)'
+bold-color-same-as-fg=false
+cursor-colors-set=false
+foreground-color='rgb(208,208,208)'
+palette=['rgb(78,78,78)', 'rgb(214,135,135)', 'rgb(95,134,95)', 'rgb(216,175,95)', 'rgb(133,173,212)', 'rgb(215,175,175)', 'rgb(135,175,175)', 'rgb(208,208,208)', 'rgb(98,98,98)', 'rgb(215,95,135)', 'rgb(135,175,135)', 'rgb(255,215,135)', 'rgb(173,212,251)', 'rgb(255,175,175)', 'rgb(135,215,215)', 'rgb(228,228,228)']
+use-theme-colors=false
+visible-name='Seoul256'
